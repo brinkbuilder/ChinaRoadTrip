@@ -1,6 +1,6 @@
 # Salt & Starlight — Qinghai + Gansu Road Trip
 
-A self-contained, English road-trip planner for two people. It includes a 13-day full-route itinerary, booking and packing checklists, a budget tracker, practical trip notes, and a small couples' memory journal.
+A self-contained Qinghai + Gansu road-trip planner. It includes a 13-day full-route itinerary, booking and packing checklists, a flexible per-traveller budget tracker, practical trip notes, and a small couples' memory journal.
 
 ## Open it locally
 
@@ -27,7 +27,7 @@ git commit -m "Update road trip planner"
 git push
 ```
 
-The checklists, budget, names, countdown date, and memories are stored only in each visitor's browser using local storage. They are not saved to GitHub or the hosting provider.
+The checklists, budget, traveller count, names, countdown date, language/theme preference, and memories are stored only in each visitor's browser using local storage. They are not saved to GitHub or the hosting provider.
 
 ## Share a filled-in plan
 
@@ -39,9 +39,9 @@ Use the **Share it** section in the site:
 
 The link is a manual snapshot. It does not create live two-way syncing, so send a fresh link after new changes. Anyone who receives the link can read the included trip details.
 
-## Daily guides and custom lists
+## Daily guides, languages, and custom lists
 
-Every itinerary-day title opens an August-ready, timed day guide with pacing, practical checks, and a small couple prompt. Custom items added to a packing or checklist section show a small **×** button so they can be removed later. The original starter items remain in place.
+Every itinerary-day title opens an August-ready, timed day guide with pacing, practical checks, and a small couple prompt. Use the **EN / 中** controls in the top-right corner to switch the full planner and every daily guide between English and Simplified Chinese; use **☀ / ☾** for the light or dark theme. Custom items added to a packing or checklist section show a small **×** button so they can be removed later. The original starter items remain in place.
 
 ## Hosting
 

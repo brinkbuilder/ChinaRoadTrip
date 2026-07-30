@@ -23,6 +23,23 @@
       --shadow: 0 18px 50px rgba(61, 49, 91, .11);
       --radius: 24px;
     }
+    html[data-theme="dark"] {
+      --ink: #f6eff9;
+      --muted: #c9bdcf;
+      --cream: #1f1829;
+      --paper: #2d2439;
+      --pink: #f0a3b0;
+      --coral: #ff9f85;
+      --peach: #76514b;
+      --lavender: #4e405f;
+      --violet: #d2bbe7;
+      --night: #bfa6d6;
+      --blue: #38596c;
+      --mint: #385a49;
+      --line: #4c4057;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .3);
+      color-scheme: dark;
+    }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -60,6 +77,12 @@
     .hero-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
     .hero-nav a { padding: 7px 10px; border-radius: 99px; color: inherit; text-decoration: none; font-size: .82rem; background: rgba(255,255,255,.08); }
     .hero-nav a:hover, .hero-nav a:focus-visible { background: rgba(255,255,255,.19); outline: none; }
+    .topbar-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+    .preference-controls { display: flex; gap: 5px; padding: 4px; border: 1px solid rgba(255,255,255,.26); border-radius: 14px; background: rgba(35,24,48,.18); }
+    .preference-button { min-width: 31px; padding: 6px 8px; border: 0; border-radius: 10px; color: rgba(255,255,255,.82); font-size: .73rem; font-weight: 850; background: transparent; }
+    .preference-button[aria-pressed="true"] { color: #4a385f; background: #ffe5cf; }
+    .preference-button:hover, .preference-button:focus-visible { outline: none; background: rgba(255,255,255,.18); }
+    .preference-button[aria-pressed="true"]:hover, .preference-button[aria-pressed="true"]:focus-visible { background: #fff2e7; }
     .hero-copy { position: relative; z-index: 1; max-width: 730px; padding: 67px 0 112px; }
     .eyebrow { margin: 0 0 14px; color: #ffe1c0; font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
@@ -170,6 +193,8 @@
     #budget-total { margin: 0; font-family: Georgia, serif; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1; }
     .total-box small { display: block; margin-top: 12px; color: rgba(255,255,255,.76); }
     .save-dot { display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: #a8e2bd; }
+    .traveller-control { display: flex; align-items: center; gap: 8px; margin-top: 17px; color: #fff6ef; font-size: .83rem; font-weight: 800; }
+    .traveller-control input { width: 64px; padding: 7px 8px; border: 1px solid rgba(255,255,255,.34); border-radius: 9px; color: #3f304f; text-align: center; background: #fff9f2; font-weight: 850; }
     .budget-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
 
     .intel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -240,6 +265,35 @@
     .reset { color: #9c5c63; text-decoration: underline; text-underline-offset: 3px; background: transparent; border: 0; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
+    html[data-theme="dark"] .jumpbar { border-color: rgba(255,255,255,.14); background: rgba(45,36,57,.88); }
+    html[data-theme="dark"] .jumpbar a { color: #e4d3ef; }
+    html[data-theme="dark"] .jumpbar a:hover { background: #4a3a5b; }
+    html[data-theme="dark"] .notice { border-color: #794f58; color: #f0c6c9; background: #482f39; }
+    html[data-theme="dark"] .notice .icon { background: #69414c; }
+    html[data-theme="dark"] .mini-metrics div, html[data-theme="dark"] .share-link-wrap { background: #342a40; }
+    html[data-theme="dark"] .stop { color: #e2d7ed; background: #40324f; }
+    html[data-theme="dark"] .stop:nth-child(3n+1) { color: #f5c9c6; background: #533641; }
+    html[data-theme="dark"] .stop:nth-child(3n) { color: #c7e8d1; background: #304a3d; }
+    html[data-theme="dark"] .drive { color: #e0d4ed; background: #443652; }
+    html[data-theme="dark"] .day-foot { border-color: #4c4057; }
+    html[data-theme="dark"] .day-tip { color: #f0b7c0; }
+    html[data-theme="dark"] .soft-button { color: #f4eafa; background: #574468; }
+    html[data-theme="dark"] .primary-button { color: #2d2138; background: #d7bfe9; }
+    html[data-theme="dark"] .outline-button { color: #e2cbed; border-color: #806b91; }
+    html[data-theme="dark"] .add-row input, html[data-theme="dark"] .budget-table input, html[data-theme="dark"] .share-link-row input { border-color: #62516e; color: var(--ink); background: #241d2e; }
+    html[data-theme="dark"] .priority, html[data-theme="dark"] .delete-item { color: #ffc2be; background: #593943; }
+    html[data-theme="dark"] .pack-card { background: #30253b; }
+    html[data-theme="dark"] .pack-card:nth-child(2) { background: #2d263d; }
+    html[data-theme="dark"] .pack-card:nth-child(3) { background: #263a31; }
+    html[data-theme="dark"] .share-import { border-color: #49735b; background: #293f34; }
+    html[data-theme="dark"] .share-import p, html[data-theme="dark"] .share-status { color: #bad8c3; }
+    html[data-theme="dark"] .guide-close { border-color: #675774; color: #e5d4f0; background: #31263d; }
+    html[data-theme="dark"] .guide-alert { color: #f0c9ca; background: #4c303b; }
+    html[data-theme="dark"] .guide-couple-note { color: #eadcf5; background: #453653; }
+    html[data-theme="dark"] .source-link { color: #e5ccef; }
+    html[data-theme="dark"] .budget-table th, html[data-theme="dark"] .budget-hint { color: #c8b9d0; }
+    html[data-theme="dark"] .traveller-control input { color: #f6eff9; border-color: #806b91; background: #2a2034; }
+
     @media (max-width: 840px) {
       .route-art { opacity: .65; right: -120px; }
       .overview-grid, .two-col, .budget-layout { grid-template-columns: 1fr; }
@@ -254,6 +308,7 @@
       .hero-inner { padding-top: 22px; }
       .topbar { align-items: flex-start; }
       .hero-nav { display: none; }
+      .topbar-actions { gap: 0; }
       .hero-copy { padding-top: 67px; padding-bottom: 150px; }
       h1 { font-size: 3.25rem; }
       .route-art { right: -200px; transform: scale(.82); transform-origin: bottom right; }
@@ -277,18 +332,23 @@
     <div class="shell hero-inner">
       <div class="topbar">
         <div class="brand"><span class="brand-mark" aria-hidden="true">♥</span> Salt &amp; Starlight</div>
-        <nav class="hero-nav" aria-label="Primary navigation">
-          <a href="#itinerary">Itinerary</a><a href="#bookings">Bookings</a><a href="#budget">Budget</a><a href="#intel">Good to know</a><a href="#packing">Packing</a>
-        </nav>
+        <div class="topbar-actions">
+          <nav class="hero-nav" aria-label="Primary navigation">
+            <a href="#itinerary" data-i18n="nav_itinerary">Itinerary</a><a href="#bookings" data-i18n="nav_bookings">Bookings</a><a href="#budget" data-i18n="nav_budget">Budget</a><a href="#intel" data-i18n="nav_intel">Good to know</a><a href="#packing" data-i18n="nav_packing">Packing</a>
+          </nav>
+          <div class="preference-controls" aria-label="Language and colour theme">
+            <button class="preference-button" type="button" data-language-choice="en" aria-pressed="true" aria-label="Use English">EN</button><button class="preference-button" type="button" data-language-choice="zh" aria-pressed="false" aria-label="使用中文">中</button><button class="preference-button" type="button" data-theme-choice="light" aria-pressed="true" aria-label="Use light theme">☀</button><button class="preference-button" type="button" data-theme-choice="dark" aria-pressed="false" aria-label="Use dark theme">☾</button>
+          </div>
+        </div>
       </div>
       <div class="hero-copy">
-          <p class="eyebrow">A thirteen-day Qinghai + Gansu love drive</p>
-        <h1>Every road is better with you.</h1>
-        <p>A cute, calm, all-in-one home base for the full route: Silk Road forts, desert sunsets, emerald salt lakes, Tibetan culture, and a lot of snacks in the passenger seat.</p>
+          <p class="eyebrow" data-i18n="hero_eyebrow">A thirteen-day Qinghai + Gansu love drive</p>
+        <h1 data-i18n="hero_title">Every road is better with you.</h1>
+        <p data-i18n="hero_description">A cute, calm, all-in-one home base for the full route: Silk Road forts, desert sunsets, emerald salt lakes, Tibetan culture, and a lot of snacks in the passenger seat.</p>
         <div class="couple-row" aria-label="Personalize your trip">
-          <label class="hero-label">Driver <input id="driver-name" class="hero-input save-field" type="text" placeholder="Your name" maxlength="28"></label>
-          <label class="hero-label">Co-pilot <input id="copilot-name" class="hero-input save-field" type="text" placeholder="Her name" maxlength="28"></label>
-          <label class="hero-label date-label">Trip begins <input id="trip-date" class="hero-input save-field" type="date"></label>
+          <label class="hero-label"><span data-i18n="driver">Driver</span><input id="driver-name" class="hero-input save-field" type="text" placeholder="Your name" maxlength="28"></label>
+          <label class="hero-label"><span data-i18n="copilot">Co-pilot</span><input id="copilot-name" class="hero-input save-field" type="text" placeholder="Her name" maxlength="28"></label>
+          <label class="hero-label date-label"><span data-i18n="trip_begins">Trip begins</span><input id="trip-date" class="hero-input save-field" type="date"></label>
         </div>
       </div>
     </div>
@@ -300,45 +360,45 @@
 
   <main class="shell">
     <nav class="jumpbar" aria-label="Quick links">
-      <a href="#itinerary">13-day plan</a><a href="#bookings">Book it</a><a href="#budget">Money tracker</a><a href="#intel">Research notes</a><a href="#packing">Pack cute + smart</a><a href="#share">Share it</a><a href="#memories">Tiny memories</a>
+      <a href="#itinerary" data-i18n="jump_itinerary">13-day plan</a><a href="#bookings" data-i18n="jump_bookings">Book it</a><a href="#budget" data-i18n="jump_budget">Money tracker</a><a href="#intel" data-i18n="jump_intel">Research notes</a><a href="#packing" data-i18n="jump_packing">Pack cute + smart</a><a href="#share" data-i18n="jump_share">Share it</a><a href="#memories" data-i18n="jump_memories">Tiny memories</a>
     </nav>
 
     <aside id="share-import-banner" class="share-import" hidden aria-live="polite">
-      <div><strong>A shared trip plan is ready to unpack ✦</strong><p>Importing replaces the planner currently saved in this browser.</p></div>
-      <div class="share-import-actions"><button id="import-share" class="primary-button" type="button">Import shared plan</button><button id="dismiss-share" class="outline-button" type="button">Not now</button></div>
+      <div><strong data-i18n="import_title">A shared trip plan is ready to unpack ✦</strong><p data-i18n="import_description">Importing replaces the planner currently saved in this browser.</p></div>
+      <div class="share-import-actions"><button id="import-share" class="primary-button" type="button" data-i18n="import_button">Import shared plan</button><button id="dismiss-share" class="outline-button" type="button" data-i18n="not_now">Not now</button></div>
     </aside>
 
     <section class="section" aria-labelledby="overview-title">
       <div class="section-head">
-        <div><p class="section-kicker">The big picture</p><h2 id="overview-title">No stop sacrificed. No heroic driving days.</h2></div>
-        <p>Your rough eight-day circuit stays intact; it simply grows to thirteen days so every original stop gets breathing room.</p>
+        <div><p class="section-kicker" data-i18n="overview_kicker">The big picture</p><h2 id="overview-title" data-i18n="overview_title">No stop sacrificed. No heroic driving days.</h2></div>
+        <p data-i18n="overview_description">Your rough eight-day circuit stays intact; it simply grows to thirteen days so every original stop gets breathing room.</p>
       </div>
       <div class="notice" role="note">
         <span class="icon" aria-hidden="true">✦</span>
-        <div><strong>Car-return reality check</strong> A Lanzhou-return rental means driving Xining → Lanzhou at the end. The high-speed train works only if you arrange an Xining drop-off or have someone else return the car. This plan keeps the car loop exactly as requested.</div>
+        <div><strong data-i18n="car_return_title">Car-return reality check</strong> <span data-i18n="car_return_description">A Lanzhou-return rental means driving Xining → Lanzhou at the end. The high-speed train works only if you arrange an Xining drop-off or have someone else return the car. This plan keeps the car loop exactly as requested.</span></div>
       </div>
       <div class="overview-grid">
         <article class="card count-card">
-          <p class="count-caption">Your little countdown</p>
+          <p class="count-caption" data-i18n="count_caption">Your little countdown</p>
           <p id="countdown">Pick a date ✦</p>
           <p id="countdown-note">Set the departure date above and we will do the butterflies for you.</p>
-          <div class="mini-metrics" aria-label="Trip statistics"><div><b>13</b><span>days</span></div><div><b>12</b><span>nights</span></div><div><b>2</b><span>favourite people</span></div></div>
+          <div class="mini-metrics" aria-label="Trip statistics"><div><b>13</b><span data-i18n="metric_days">days</span></div><div><b>12</b><span data-i18n="metric_nights">nights</span></div><div><b id="traveller-metric">2</b><span data-i18n="metric_people">travellers</span></div></div>
         </article>
         <article class="card route-card">
-          <h3>Your full little loop</h3>
-          <p>Comfort-first sequencing, still holding every place in your original wish-list.</p>
+          <h3 data-i18n="route_title">Your full little loop</h3>
+          <p data-i18n="route_description">Comfort-first sequencing, still holding every place in your original wish-list.</p>
           <div class="stop-list" aria-label="Route stops">
             <span class="stop">Lanzhou</span><span class="stop">Zhangye</span><span class="stop">Jiayuguan</span><span class="stop">Guazhou</span><span class="stop">Dunhuang</span><span class="stop">Daqaidam</span><span class="stop">Delingha</span><span class="stop">Golmud</span><span class="stop">Qarhan</span><span class="stop">Chaka</span><span class="stop">Qinghai Lake</span><span class="stop">Ta'er</span><span class="stop">Xining</span><span class="stop">Lanzhou</span>
           </div>
-          <a class="soft-button" href="#itinerary">Open the day-by-day plan ↓</a>
+          <a class="soft-button" href="#itinerary" data-i18n="route_button">Open the day-by-day plan ↓</a>
         </article>
       </div>
     </section>
 
     <section class="section" id="itinerary" aria-labelledby="itinerary-title">
       <div class="section-head">
-        <div><p class="section-kicker">The actual adventure · August edition</p><h2 id="itinerary-title">A full-route, unhurried 13-day itinerary.</h2></div>
-        <p>Tap a day title for the full timed guide. August weather, road works and capacity can change on the day—check live navigation, the official attraction notice, and road hotline 12328 before each long drive.</p>
+        <div><p class="section-kicker" data-i18n="itinerary_kicker">The actual adventure · August edition</p><h2 id="itinerary-title" data-i18n="itinerary_title">A full-route, unhurried 13-day itinerary.</h2></div>
+        <p data-i18n="itinerary_description">Tap a day title for the full timed guide. August weather, road works and capacity can change on the day—check live navigation, the official attraction notice, and road hotline 12328 before each long drive.</p>
       </div>
       <div class="day-grid" aria-label="Thirteen-day itinerary; scroll horizontally for more days">
         <article class="day-card" data-day="1"><div class="day-number"><span>Day 01</span><span>♥ Arrive soft</span></div><h3><button class="day-title" type="button" data-open-day="1">Lanzhou: Yellow River hello<span class="day-title-hint">Open the full day guide ↗</span></button></h3><span class="drive">✦ Airport + city day</span><ul><li>Pick up the car, film every panel and wheel before leaving.</li><li>Pre-booked Gansu Provincial Museum; meet the Flying Horse.</li><li>Beef noodles, Zhongshan Bridge, and a no-rush riverside walk.</li></ul><p class="day-tip">Tiny date: choose a snack for each other without telling them first.</p><div class="day-foot"><span class="stay">Sleep: Lanzhou</span><label class="day-check"><input type="checkbox" aria-label="Mark day 1 complete"> Done</label></div></article>
@@ -358,15 +418,15 @@
     </section>
 
     <section class="section" id="bookings" aria-labelledby="bookings-title">
-      <div class="section-head"><div><p class="section-kicker">Before the wheels turn</p><h2 id="bookings-title">The booking command center.</h2></div><p>Tick things off together. Everything on this page saves in this browser, automatically.</p></div>
+      <div class="section-head"><div><p class="section-kicker" data-i18n="booking_kicker">Before the wheels turn</p><h2 id="bookings-title" data-i18n="booking_title">The booking command center.</h2></div><p data-i18n="booking_description">Tick things off together. Everything on this page saves in this browser, automatically.</p></div>
       <div class="two-col">
-        <article class="card list-card"><h3>Book before the trip</h3><p>These are the things most likely to create a bad surprise if left late.</p><div id="booking-list" class="checklist" aria-label="Bookings checklist"></div><div class="add-row"><label class="sr-only" for="booking-add">Add a booking task</label><input id="booking-add" type="text" maxlength="100" placeholder="Add a booking or task"><button id="booking-add-button" type="button">+ Add</button></div></article>
-        <article class="card list-card"><h3>Car + road handover</h3><p>Two minutes of admin protects the whole trip.</p><div id="road-list" class="checklist" aria-label="Road and rental checklist"></div><div class="add-row"><label class="sr-only" for="road-add">Add a road task</label><input id="road-add" type="text" maxlength="100" placeholder="Add a road task"><button id="road-add-button" type="button">+ Add</button></div></article>
+        <article class="card list-card"><h3 data-i18n="book_card_title">Book before the trip</h3><p data-i18n="book_card_description">These are the things most likely to create a bad surprise if left late.</p><div id="booking-list" class="checklist" aria-label="Bookings checklist"></div><div class="add-row"><label class="sr-only" for="booking-add" data-i18n="add_booking_label">Add a booking task</label><input id="booking-add" type="text" maxlength="100" placeholder="Add a booking or task"><button id="booking-add-button" type="button" data-i18n="add_button">+ Add</button></div></article>
+        <article class="card list-card"><h3 data-i18n="road_card_title">Car + road handover</h3><p data-i18n="road_card_description">Two minutes of admin protects the whole trip.</p><div id="road-list" class="checklist" aria-label="Road and rental checklist"></div><div class="add-row"><label class="sr-only" for="road-add" data-i18n="add_road_label">Add a road task</label><input id="road-add" type="text" maxlength="100" placeholder="Add a road task"><button id="road-add-button" type="button" data-i18n="add_button">+ Add</button></div></article>
       </div>
     </section>
 
     <section class="section" id="budget" aria-labelledby="budget-title">
-      <div class="section-head"><div><p class="section-kicker">The no-awkward-money zone</p><h2 id="budget-title">Our flexible CNY budget.</h2></div><p>Start with editable placeholders, then replace them with booked prices. It is a tracker, not a promise of current rates.</p></div>
+      <div class="section-head"><div><p class="section-kicker" data-i18n="budget_kicker">The no-awkward-money zone</p><h2 id="budget-title" data-i18n="budget_title">Our flexible CNY budget.</h2></div><p data-i18n="budget_description">Start with editable placeholders, then replace them with booked prices. It is a tracker, not a promise of current rates.</p></div>
       <article class="card budget-card"><div class="budget-layout"><div><table class="budget-table"><thead><tr><th scope="col">For the two of you</th><th scope="col">CNY</th></tr></thead><tbody>
         <tr><td>Rental car + basic insurance <span class="budget-hint">(13 days)</span></td><td><input class="budget-input" data-key="rental" type="number" min="0" value="0" aria-label="Rental car and insurance CNY"></td></tr>
         <tr><td>Fuel <span class="budget-hint">(about 3,500 km, confirm)</span></td><td><input class="budget-input" data-key="fuel" type="number" min="0" value="0" aria-label="Fuel CNY"></td></tr>
@@ -375,11 +435,11 @@
         <tr><td>Hotels <span class="budget-hint">(12 nights)</span></td><td><input class="budget-input" data-key="hotels" type="number" min="0" value="0" aria-label="Hotels CNY"></td></tr>
         <tr><td>Food, coffee + treats</td><td><input class="budget-input" data-key="food" type="number" min="0" value="0" aria-label="Food CNY"></td></tr>
         <tr><td>Emergency / sweet extras</td><td><input class="budget-input" data-key="extras" type="number" min="0" value="0" aria-label="Emergency and extra CNY"></td></tr>
-      </tbody></table></div><aside class="total-box"><p>Current trip pot</p><output id="budget-total" aria-live="polite">¥0</output><small><span class="save-dot"></span>Saved in this browser. Add your actual booked amounts whenever you have them.</small><div class="budget-actions"><button id="split-total" class="soft-button" type="button">Show half each</button><button id="clear-budget" class="outline-button" type="button">Clear numbers</button></div><small id="split-note" aria-live="polite"></small></aside></div></article>
+      </tbody></table></div><aside class="total-box"><p data-i18n="trip_pot">Current trip pot</p><output id="budget-total" aria-live="polite">¥0</output><small><span class="save-dot"></span><span data-i18n="budget_saved">Saved in this browser. Add your actual booked amounts whenever you have them.</span></small><label class="traveller-control" for="traveller-count"><span data-i18n="traveller_count">Travellers</span><input id="traveller-count" class="save-field" type="number" min="1" max="20" value="2" inputmode="numeric"><span data-i18n="people_label">people</span></label><div class="budget-actions"><button id="split-total" class="soft-button" type="button" data-i18n="show_split">Show split</button><button id="clear-budget" class="outline-button" type="button" data-i18n="clear_numbers">Clear numbers</button></div><small id="split-note" aria-live="polite"></small></aside></div></article>
     </section>
 
     <section class="section" id="intel" aria-labelledby="intel-title">
-      <div class="section-head"><div><p class="section-kicker">Research, translated into useful</p><h2 id="intel-title">Trip intelligence for every big stop.</h2></div><p>These are the details worth knowing, not a list of random tourist facts. Ticket policies, access and conditions can change—open the sources before booking.</p></div>
+      <div class="section-head"><div><p class="section-kicker" data-i18n="intel_kicker">Research, translated into useful</p><h2 id="intel-title" data-i18n="intel_title">Trip intelligence for every big stop.</h2></div><p data-i18n="intel_description">These are the details worth knowing, not a list of random tourist facts. Ticket policies, access and conditions can change—open the sources before booking.</p></div>
       <div class="intel-grid">
         <article class="intel"><div class="intel-icon">🏛</div><h3>Lanzhou museums</h3><p>Gansu Provincial Museum is free but uses real-name reservations. Its official guidance lists Tuesday–Sunday opening, so make it a Day 1 priority rather than a “maybe later.”</p></article>
         <article class="intel"><div class="intel-icon">🌈</div><h3>Seven-Coloured Danxia</h3><p>Sunset is a great choice, but leave a proper entry buffer. The official geopark has real-name entry and a daily capacity cap; ticket pricing changed in 2026, so do not rely on the old ¥95 figure.</p></article>
@@ -397,24 +457,24 @@
     </section>
 
     <section class="section" id="packing" aria-labelledby="packing-title">
-      <div class="section-head"><div><p class="section-kicker">Tiny things, huge difference</p><h2 id="packing-title">Pack cute. Pack clever.</h2></div><p>Check off what is in the bag; add anything only the two of you would remember.</p></div>
+      <div class="section-head"><div><p class="section-kicker" data-i18n="packing_kicker">Tiny things, huge difference</p><h2 id="packing-title" data-i18n="packing_title">Pack cute. Pack clever.</h2></div><p data-i18n="packing_description">Check off what is in the bag; add anything only the two of you would remember.</p></div>
       <div class="packing-grid">
-        <article class="pack-card"><h3>Sun + salt + wind</h3><div id="sun-pack" class="checklist" aria-label="Sun and salt packing checklist"></div><div class="add-row"><label class="sr-only" for="sun-add">Add sun item</label><input id="sun-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="sun-pack">+ Add</button></div></article>
-        <article class="pack-card"><h3>Car cozy kit</h3><div id="car-pack" class="checklist" aria-label="Car packing checklist"></div><div class="add-row"><label class="sr-only" for="car-add">Add car item</label><input id="car-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="car-pack">+ Add</button></div></article>
-        <article class="pack-card"><h3>Dates + moments</h3><div id="love-pack" class="checklist" aria-label="Couple packing checklist"></div><div class="add-row"><label class="sr-only" for="love-add">Add couple item</label><input id="love-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="love-pack">+ Add</button></div></article>
+        <article class="pack-card"><h3 data-i18n="sun_pack_title">Sun + salt + wind</h3><div id="sun-pack" class="checklist" aria-label="Sun and salt packing checklist"></div><div class="add-row"><label class="sr-only" for="sun-add" data-i18n="add_sun_label">Add sun item</label><input id="sun-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="sun-pack" data-i18n="add_button">+ Add</button></div></article>
+        <article class="pack-card"><h3 data-i18n="car_pack_title">Car cozy kit</h3><div id="car-pack" class="checklist" aria-label="Car packing checklist"></div><div class="add-row"><label class="sr-only" for="car-add" data-i18n="add_car_label">Add car item</label><input id="car-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="car-pack" data-i18n="add_button">+ Add</button></div></article>
+        <article class="pack-card"><h3 data-i18n="love_pack_title">Dates + moments</h3><div id="love-pack" class="checklist" aria-label="Couple packing checklist"></div><div class="add-row"><label class="sr-only" for="love-add" data-i18n="add_love_label">Add couple item</label><input id="love-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="love-pack" data-i18n="add_button">+ Add</button></div></article>
       </div>
     </section>
 
     <section class="section" id="memories" aria-labelledby="memories-title">
-      <article class="card date-night"><p class="section-kicker" style="color:#ffd5ba">For the two of you</p><h3 id="memories-title">Leave a tiny breadcrumb for future-you.</h3><p>One sentence each night will make this trip feel even better when you read it back at home.</p><form id="memory-form"><label class="sr-only" for="memory">Today’s tiny memory</label><textarea id="memory" maxlength="480" placeholder="Today, I loved when you…"></textarea><button type="submit">Save our memory ♥</button></form><p id="memory-saved" class="memory-saved" aria-live="polite"></p><div class="love-prompt"><p id="love-prompt-text">Tonight’s question: What was your favourite tiny moment today?</p><button id="new-prompt" type="button">Give us another ✦</button></div></article>
+      <article class="card date-night"><p class="section-kicker" style="color:#ffd5ba" data-i18n="memories_kicker">For the two of you</p><h3 id="memories-title" data-i18n="memories_title">Leave a tiny breadcrumb for future-you.</h3><p data-i18n="memories_description">One sentence each night will make this trip feel even better when you read it back at home.</p><form id="memory-form"><label class="sr-only" for="memory" data-i18n="memory_label">Today’s tiny memory</label><textarea id="memory" maxlength="480" placeholder="Today, I loved when you…"></textarea><button type="submit" data-i18n="save_memory">Save our memory ♥</button></form><p id="memory-saved" class="memory-saved" aria-live="polite"></p><div class="love-prompt"><p id="love-prompt-text">Tonight’s question: What was your favourite tiny moment today?</p><button id="new-prompt" type="button" data-i18n="new_prompt">Give us another ✦</button></div></article>
     </section>
 
     <section class="section" id="share" aria-labelledby="share-title">
-      <article class="card share-card"><p class="section-kicker">For your co-pilot</p><h3 id="share-title">Send the plan you have actually filled in.</h3><p>Create a private snapshot link after you add your names, checklist ticks, budget, custom items, and little memories. Your partner opens the link and taps <em>Import shared plan</em>.</p><div class="share-actions"><button id="make-share-link" class="primary-button" type="button">Create share link ♥</button></div><div id="share-link-wrap" class="share-link-wrap" hidden><label for="share-link">Your shareable trip link</label><div class="share-link-row"><input id="share-link" type="text" readonly aria-describedby="share-status"><button id="copy-share-link" class="soft-button" type="button">Copy link</button></div><p id="share-status" class="share-status" aria-live="polite"></p></div><p class="share-note">This is a snapshot, not live sync: send a new link after making new changes. Anyone with the link can read the shared plan, so send it only to your partner.</p></article>
+      <article class="card share-card"><p class="section-kicker" data-i18n="share_kicker">For your co-pilot</p><h3 id="share-title" data-i18n="share_title">Send the plan you have actually filled in.</h3><p data-i18n="share_description">Create a private snapshot link after you add your names, checklist ticks, budget, custom items, and little memories. Your partner opens the link and taps <em>Import shared plan</em>.</p><div class="share-actions"><button id="make-share-link" class="primary-button" type="button" data-i18n="make_share">Create share link ♥</button></div><div id="share-link-wrap" class="share-link-wrap" hidden><label for="share-link" data-i18n="share_label">Your shareable trip link</label><div class="share-link-row"><input id="share-link" type="text" readonly aria-describedby="share-status"><button id="copy-share-link" class="soft-button" type="button" data-i18n="copy_link">Copy link</button></div><p id="share-status" class="share-status" aria-live="polite"></p></div><p class="share-note" data-i18n="share_note">This is a snapshot, not live sync: send a new link after making new changes. Anyone with the link can read the shared plan, so send it only to your partner.</p></article>
     </section>
 
     <section class="section" aria-labelledby="sources-title">
-      <article class="card source-card"><h3 id="sources-title">Official links to check right before you go</h3><p>Research checked on 30 July 2026. Prices, seasons, bookings, access rules and road conditions can change—please open these official sources when you make the actual reservation.</p><div class="sources">
+      <article class="card source-card"><h3 id="sources-title" data-i18n="sources_title">Official links to check right before you go</h3><p data-i18n="sources_description">Research checked on 30 July 2026. Prices, seasons, bookings, access rules and road conditions can change—please open these official sources when you make the actual reservation.</p><div class="sources">
         <a class="source-link" href="https://www.mgk.org.cn/" target="_blank" rel="noopener"><span>↗</span>Mogao Caves official booking</a>
         <a class="source-link" href="https://www.dunhuangcaves.org/info/1020/7498.htm" target="_blank" rel="noopener"><span>↗</span>Mogao’s 2026 visitor rules</a>
         <a class="source-link" href="https://www.gswbj.gov.cn/a/2026/04/16/28007.html" target="_blank" rel="noopener"><span>↗</span>Mingsha Mountain 2026 notice</a>
@@ -439,7 +499,7 @@
       <p id="guide-couple-note" class="guide-couple-note"></p>
     </div>
   </dialog>
-  <footer class="shell">Made for the passenger-seat DJ and the driver who always says “we’re basically there.” <button id="reset-site" class="reset" type="button">Reset this planner</button></footer>
+  <footer class="shell">Made for the passenger-seat DJ and the driver who always says “we’re basically there.” <button id="reset-site" class="reset" type="button" data-i18n="reset">Reset this planner</button></footer>
 
   <script>
     (() => {
@@ -465,6 +525,399 @@
         12: { kicker: 'August · Day 12 · Qinghai Lake to Ta’er to Xining', title: 'Lake light, monastery calm, city dinner', intro: 'This combines your final lake morning, Ta’er Monastery, and the Qinghai Museum in a deliberately ordered day.', alert: 'Confirm Ta’er and Qinghai Museum entry rules / reservation windows in advance. Religious spaces may restrict photography; treat staff guidance as final.', slots: [['06:30–07:15', 'Optional lake sunrise', 'Only if you slept well. A brief quiet look is enough; do not sacrifice the whole day for a perfect sky.'], ['07:30', 'Breakfast + checkout', 'Pack modest clothing for Ta’er, water, and the museum reservation / ID.'], ['08:30', 'Leave Qinghai Lake / Heimahe', 'Build road and photo-stop time into the route, but keep the Ta’er arrival as the priority.'], ['12:00–14:00', 'Ta’er Monastery', 'Walk slowly, keep voices low, cover shoulders / knees, and skip any area marked no-photo.'], ['14:45–16:30', 'Qinghai Museum, Xining', 'Use your reserved slot for the highlights; the goal is a satisfying final cultural stop, not every gallery.'], ['17:00', 'Xining hotel check-in', 'Return the car only tomorrow; tonight is for a relaxed last city meal.'], ['19:00', 'Dinner + last-night recap', 'Choose your top three moments and one thing you want to bring into the next trip together.']], couple: 'Tonight’s question: what did this trip teach us about how we travel together?' },
         13: { kicker: 'August · Day 13 · Xining to Lanzhou', title: 'A gentle homeward ending', intro: 'Leave enough space for the car return and any flight. The goal today is a clean finish, not one last rushed attraction.', alert: 'A Lanzhou-return rental requires the actual drive back. Do not take the high-speed train unless the rental company has accepted an Xining return or another driver is handling the car.', slots: [['08:00', 'Breakfast + pack calmly', 'Do the room sweep, refill water, and collect every ticket, ID, charger, and souvenir.'], ['09:00–10:30 optional', 'Wildlife park or one last Xining coffee', 'Choose this only if you have a generous Lanzhou buffer; otherwise enjoy a slow breakfast and leave early.'], ['10:30–11:00', 'Final vehicle check', 'Fuel to the contract level, remove rubbish, and take a final video of the interior and exterior.'], ['11:00', 'Drive Xining → Lanzhou', 'Use the main route, stop if tired, and keep the return time conservative.'], ['14:30 target', 'Return the car', 'Hand over with your final video and fuel receipt ready; check the return report before leaving.'], ['After return', 'Last noodle bowl + goodbye', 'Keep this part unbooked if possible so delays do not steal your final meal.']], couple: 'Write one note to future-us about a place we want to drive to next.' }
       };
+
+      const dailyGuidesZh = {
+        1: {
+          kicker: '8月 · 第01天 · 兰州',
+          title: '在黄河边轻轻落地',
+          intro: '这是一个有一点安排、却不必在舟车劳顿后追赶所有事物的抵达日。',
+          alert: '把有时间段的博物馆预约当作今天的锚点。若航班晚点，安心跳过博物馆；只有在回到兰州的时间允许时，再放到最后一个早晨。',
+          slots: [
+            ['抵达时段', '落地、取行李、深呼吸', '把水和一份轻食放在手边；八月的日晒加上旅途脱水，很容易让人不舒服。'],
+            ['抵达后45–75分钟', '慢慢取车', '开走前录下车身各面、每个轮胎、车顶、玻璃、油表和已有划痕。'],
+            ['目标14:30–16:30', '甘肃省博物馆', '看看马踏飞燕，只挑两三个展厅就好；别把它变成博物馆马拉松。'],
+            ['17:30', '酒店入住＋洗澡重置', '把护照、票据、充电器和明天的水放在一个一眼就能看到的地方。'],
+            ['19:00', '第一碗正经牛肉面', '一人一碗，再点一份共享小菜；从今天开始你们的零食评分传统。'],
+            ['20:30–21:30', '中山桥＋黄河散步', '一起拍一张照片，然后放下手机十分钟，认真享受“终于到了”。']
+          ],
+          couple: '小小约会任务：悄悄挑一份你觉得对方会超喜欢的零食。'
+        },
+        2: {
+          kicker: '8月 · 第02天 · 兰州至张掖',
+          title: '山路、零食与日落丹霞',
+          intro: '这是真正的赶路日；早些出发、在彩色山丘前留足白天，就是今天的胜利。',
+          alert: '八月炎热又繁忙。早餐前先确认七彩丹霞当日最后入园时间，再从那个时间倒推行程——不要从你想拍到的日落照片倒推。',
+          slots: [
+            ['06:30', '早餐＋最后检查房间', '上车前备好防晒、帽子、水、充电宝、离线地图和酒店地址。'],
+            ['07:15', '离开兰州', '走主路、安全第一；想看风景时，只在正规服务区或合法观景点停车。'],
+            ['10:00', '第一次拉伸＋咖啡停靠', '只有下一位司机真的休息够了才换手；花五分钟走一走，不只是买杯饮料。'],
+            ['12:30', '张掖附近／市内午餐', '简单吃好，下午观光前把水补足。'],
+            ['14:30–15:30', '入住或寄存行李', '降温、换轻薄衣服，然后带着充足余量前往丹霞入口。'],
+            ['16:30–日落', '张掖七彩丹霞', '按官方摆渡车和观景台路线走，在一个最喜欢的观景点慢下来，让光线自己完成魔法。'],
+            ['日落后', '晚餐＋早点睡', '吃顿热乎的晚饭，睡前收好明天要用的东西——明天会刻意放慢。']
+          ],
+          couple: '拍照任务：在丹霞里各自挑一种颜色，说说它为什么让你想起对方。'
+        },
+        3: {
+          kicker: '8月 · 第03天 · 张掖至嘉峪关',
+          title: '刻意放慢的丝路一天',
+          intro: '你们值得拥有一个短车程日。让嘉峪关成为有历史感的体验，而不是又一个必须打勾的景点。',
+          alert: '把关城安排在较凉快的午后，随身带水；八月里被太阳晒透的石墙很消耗体力。',
+          slots: [
+            ['07:30', '慢早餐＋退房', '今天不用摸黑起床。确认嘉峪关入园安排，再补足水。'],
+            ['08:30', '张掖 → 嘉峪关', '路上聊聊前两天各自最喜欢的瞬间。'],
+            ['11:30', '放行李＋轻松午餐', '别饿着肚子进关城；出发前先决定下午的大致路线。'],
+            ['13:00–16:00', '嘉峪关关城', '按自己的节奏走主要区域，找阴凉处休息；读几块说明牌就好，不必每块都读。'],
+            ['16:30', '冷饮＋躺平休息', '给彼此一个安静小时；坐下来之后，观光会舒服得多。'],
+            ['19:00', '本地晚餐＋金色时刻散步', '找一家酒店附近放松的餐厅，并把明天沙漠长途要用的补给准备好。']
+          ],
+          couple: '在城墙上复刻一个傻傻的“守城门”姿势，之后在别处再拍一张同款。'
+        },
+        4: {
+          kicker: '8月 · 第04天 · 嘉峪关至瓜州至敦煌',
+          title: '荒漠雕塑、开阔公路和夜市',
+          intro: '一个漂亮的雕塑停靠点，加上一段目的明确的车程，今天就很完美了；别再给这天不停塞绕路景点。',
+          alert: '进入长而开阔的路段前先加满油，把水放在车内而不是后备箱；别等饿了才开始找午餐。',
+          slots: [
+            ['07:30', '早餐、退房、加油', '满油出发，并在两张座椅之间放一袋共享零食。'],
+            ['08:15', '离开嘉峪关', '出发前把瓜州雕塑停靠点和敦煌酒店都存进离线地图。'],
+            ['10:45–11:30', '瓜州“大地之子／大地之女”', '拍照、伸伸腿；停留别太久，给平静抵达敦煌留出空间。'],
+            ['12:00', '瓜州午餐＋补水', '吃点扎实的东西，并在继续前用一次正规的休息区。'],
+            ['13:00–16:00', '开往敦煌', '一人专心开车、一人负责领航；司机不手持手机，只在官方停车点停靠。'],
+            ['17:00', '入住＋日落前休息', '降温、洗澡，把莫高窟票和证件放在一起，给明天准备好。'],
+            ['19:30–21:00', '沙州夜市', '分着尝几样小吃，不要被一大份主食填满；给甜品留点位置。']
+          ],
+          couple: '在夜市挑最夸张的一样小吃，一起给它打分。'
+        },
+        5: {
+          kicker: '8月 · 第05天 · 敦煌',
+          title: '千年洞窟、柔软沙丘与沙漠日落',
+          intro: '今天把体力分成两段：专注看莫高窟，在炎热午后休息，等光线温柔下来再走进沙丘。',
+          alert: '你的莫高窟预约时间优先于下面所有建议时间。至少提前30分钟到数字展示中心；洞窟内禁止拍照和录像。',
+          slots: [
+            ['预约时段前30分钟', '抵达莫高窟数字展示中心', '带上预约所用证件，轻装前往；影片和摆渡车会决定整体节奏。'],
+            ['预约时段', '莫高窟参观', '认真听几个洞窟里的讲解，不用试图记住每一个细节；跟着讲解员的节奏走。'],
+            ['13:00–15:30', '午餐＋回酒店重置', '吃饭、补水、洗澡、躺下休息；午休会保护你们看日落的体力。'],
+            ['16:30', '提前晚餐／小零食', '吃得轻一点，带上水、墨镜、头巾和适合走沙地的鞋。'],
+            ['17:30–日落', '鸣沙山＋月牙泉', '慢慢走进去，看到喜欢的景色就停下；骑骆驼是自愿犒赏，不是必须完成的任务。'],
+            ['日落后', '茶、甜品与安静复盘', '回到酒店后，写下一句今天最美的画面——不要靠照片来记住它。']
+          ],
+          couple: '问问彼此：今天哪个地方最不真实，为什么？'
+        },
+        6: {
+          kicker: '8月 · 第06天 · 敦煌至大柴旦',
+          title: '道路开始变得辽阔又野性',
+          intro: '把今天当成一段用心对待的偏远公路日。风景本身就是活动，所以要认真休息，而不是随意找地方停下来拍照。',
+          alert: '八月高原天气变化很快。早上查看预报和路况通知，及早加满油，并让电量、水和零食始终充足。',
+          slots: [
+            ['06:45', '早餐＋高海拔车辆检查', '出城前确认水、帽子、防晒、常用药、离线地图、油量和轮胎状态。'],
+            ['07:30', '离开敦煌', '出发要足够早，确保之后每个选择都能在天亮时完成。'],
+            ['09:45', '正规服务区拉伸', '走五分钟，只有真的休息够了才换手，并补满饮料。'],
+            ['12:30', '简单午餐停靠', '如果有热食就吃热食；不要为了抢30分钟而跳过午餐。'],
+            ['15:30–16:30', '抵达／入住大柴旦', '先安顿下来，查看当地入园条件，再决定傍晚去湖边的时间是否合适。'],
+            ['17:30–19:00', '在柔和光线里看翡翠湖', '只走标记清楚的游客区域；盐壳地表脆弱，不冒险乱走也能看到很美的颜色。'],
+            ['20:00', '热晚餐＋早点睡', '把更冷清晨要穿的层次衣物摆好，并把所有设备充满电。']
+          ],
+          couple: '为这段沙漠公路选一首歌，把它定为你们的“旅行之歌”。'
+        },
+        7: {
+          kicker: '8月 · 第07天 · 大柴旦至德令哈',
+          title: '特意留出的缓冲日',
+          intro: '这不是浪费的一天——这小小的停顿，会让接下来两天的长途对你们都更温柔。',
+          alert: '如果昨天风大、下雨或行程太赶，就用早上的时间再去一次翡翠湖；如果昨天已经很完美，那就多睡一小时，慢慢吃早餐。',
+          slots: [
+            ['07:00–08:30', '可选：再去一次翡翠湖', '只有真的想换一种光线或天气再试时才去；不然就选择休息。'],
+            ['09:00', '早餐＋退房', '做一次温和的身体检查：头疼、恶心、疲倦和补水情况，在高海拔都很重要。'],
+            ['10:00', '开往德令哈', '按这趟旅程的标准，这是一段短转场——不要把它变成比赛。'],
+            ['13:00', '午餐＋酒店入住', '吃饭、整理行李，把下午当作真正的重置时间。'],
+            ['16:00', '洗衣、补零食、准备路线', '下载明天路线，确认格尔木酒店，并补足水和零食。'],
+            ['19:00', '轻松晚餐＋早点熄灯', '宁可早点睡，也不要深夜闲逛；明天是真正的转场日。']
+          ],
+          couple: '各自写下一件：到目前为止，对方作为司机或副驾做得特别好的事。'
+        },
+        8: {
+          kicker: '8月 · 第08天 · 德令哈至格尔木',
+          title: '一段轻松的高原转场',
+          intro: '这比前几段转场友善得多：早点抵达、把车重新整理好，再给格尔木一个放松的夜晚。',
+          alert: '出发前仍要查看八月路况通知。若天气变差，或有人在高海拔感到不舒服，计划就是放慢——不是硬塞进一个额外停靠点。',
+          slots: [
+            ['07:30', '早餐、水和路线检查', '确认天气和道路情况，放一份看得见的零食；让昨晚睡得最好的人先开。'],
+            ['08:00', '离开德令哈', '路线保持简单；正常休息下大约四到五小时。'],
+            ['10:15', '加油＋拉伸重置', '走一走、喝水、上洗手间，然后诚实判断现在是否适合换司机。'],
+            ['12:30–13:30', '抵达格尔木、午餐、入住', '吃顿正经饭，降降温，把酒店房间整理得舒服一点。'],
+            ['15:30', '车辆重置', '检查油量、胎压、玻璃水、水和零食，并确认明天察尔汗的入园安排。'],
+            ['17:30', '咖啡、公园或轻松逛城', '重点是平静，不是再加一个“奖励景点”。'],
+            ['19:30', '晚餐＋早点睡', '给人和设备都充好电，为盐湖日做准备。']
+          ],
+          couple: '公路旅行规则：副驾可以喊休息，而且不需要辩论。'
+        },
+        9: {
+          kicker: '8月 · 第09天 · 格尔木与察尔汗',
+          title: '让盐湖独享一天',
+          intro: '把它单独留成往返日，才有空间享受真正的主角：盐晶、大天空和慢慢走的一段路，而不是又一场没完没了的赶车。',
+          alert: '使用官方游客入口、当日票务和摆渡安排。不要走工业道路捷径，也不要把车开上未获批准的盐面。',
+          slots: [
+            ['08:00', '早餐＋确认入口细节', '查看当天游客通知、摆渡时间、天气，以及所需证件。'],
+            ['08:45', '格尔木出发前往察尔汗', '车内保持凉爽，水放手边，并按官方进场路线导航。'],
+            ['10:00–13:00', '察尔汗盐湖参观', '搭乘摆渡车／走标记路线，看盐花和万丈盐桥，也留一点时间感受它的辽阔。'],
+            ['13:30', '午餐＋阴凉处休息', '回程前先吃饭；盐面反光和太阳比看上去更耗体力。'],
+            ['15:00', '返回格尔木', '下午整理照片、洗掉装备上的盐尘，然后休息。'],
+            ['18:30', '晚餐＋明天准备', '补齐缺的零食，把前往茶卡的长途日尽量安排得顺手。']
+          ],
+          couple: '各自选一张不是自拍、却一看就像“这是我们在这趟旅程里”的照片。'
+        },
+        10: {
+          kicker: '8月 · 第10天 · 格尔木至茶卡',
+          title: '又一段长路，一次温柔落脚',
+          intro: '今天是转场日，不是观光日。把茶卡留给明天，才能不慌不忙地抵达。',
+          alert: '八月的雨、风、施工或疲劳都可能增加时间。预留60–90分钟缓冲；宁可多加一晚缓冲，也不要筋疲力尽地抵达，毁掉明早的盐湖体验。',
+          slots: [
+            ['06:30', '早餐＋完整退房', '再次确认茶卡酒店、路线、油量续航、天气和离线地图。'],
+            ['07:00', '离开格尔木', '早点出发，让昨晚休息最好的人先开。'],
+            ['09:30', '服务区拉伸', '喝水、吃零食、上洗手间、走五分钟，并诚实检查体力。'],
+            ['12:30', '午餐＋加油', '坐下来好好吃一餐；今天不该只在车上吃薯片。'],
+            ['目标14:30–15:30', '茶卡入住', '如果路况正常，趁天亮还有余量时安顿下来。'],
+            ['17:00', '小镇散步＋准备湖边装备', '摆好盐湖鞋、防晒外层、证件、水和预约信息。'],
+            ['20:00', '早点吃饭、早点睡', '安静的晚上，会让清晨开园真的变成一种享受。']
+          ],
+          couple: '做一个小小的“抵达仪式”：洗澡、喝茶、拍一张窗外景色，然后关灯睡觉。'
+        },
+        11: {
+          kicker: '8月 · 第11天 · 茶卡至青海湖',
+          title: '镜面清晨，湖畔傍晚',
+          intro: '节奏很简单：清晨享受茶卡，在人群和风变大前离开，下午去一个合法的湖畔观景点。',
+          alert: '以茶卡当周公布的开园时间为准，而不是固定的网上时间表。风雨会影响倒影和通行；没有完美镜面，依然可以很美。',
+          slots: [
+            ['景区开园', '早点进入茶卡盐湖', '带齐证件、防晒和水，在官方开园前一点点抵达闸口。'],
+            ['开园后2.5小时', '慢走盐湖、拍照', '走标记路线，保护双脚；挑几张喜欢的照片就好，不必为了“完美倒影”走一整天。'],
+            ['10:30', '离开茶卡', '如有需要冲洗／换鞋，取好行李，在高峰人流令人疲惫前出发。'],
+            ['13:00', '路上午餐', '吃饭、补水，并确认青海湖观景点／酒店地址。'],
+            ['15:30–18:30', '指定青海湖生态观景点', '选择黑马河附近合法、受管理的观景点；看光线变化，不必为了追湖岸最后几公里不停开车。'],
+            ['19:30', '晚餐＋看星空情况', '如果云散了，晚饭后去外面安静待五分钟；记得加一层衣服。']
+          ],
+          couple: '问问彼此：如果能把这趟旅程中的一幅景色永远暂停，会选哪一幅？'
+        },
+        12: {
+          kicker: '8月 · 第12天 · 青海湖至塔尔寺至西宁',
+          title: '湖光、寺院宁静与城市晚餐',
+          intro: '今天按顺序串起最后一个湖边清晨、塔尔寺和青海省博物馆。',
+          alert: '提前确认塔尔寺和青海省博物馆的入场规则／预约时段。宗教空间可能限制拍摄，以现场工作人员指引为准。',
+          slots: [
+            ['06:30–07:15', '可选：青海湖日出', '只有睡够了才去。短短安静看一眼就够，不要为了完美天空牺牲整天。'],
+            ['07:30', '早餐＋退房', '为塔尔寺准备得体衣物、水，以及博物馆预约信息／证件。'],
+            ['08:30', '离开青海湖／黑马河', '把路况和拍照停留时间算进路线，但让按时抵达塔尔寺成为优先事项。'],
+            ['12:00–14:00', '塔尔寺', '慢慢走、轻声说话、遮住肩膀和膝盖，并跳过所有标明禁止拍摄的区域。'],
+            ['14:45–16:30', '西宁青海省博物馆', '用预约时段看重点；目标是一次满足的最后文化停留，不是逛完每个展厅。'],
+            ['17:00', '西宁酒店入住', '车明天才还；今晚只需要享受一顿放松的城市晚餐。'],
+            ['19:00', '晚餐＋最后一晚复盘', '选出三段最喜欢的瞬间，再说一件想带到下一次共同旅行里的事。']
+          ],
+          couple: '今晚的问题：这趟旅行让我们学会了怎样一起旅行？'
+        },
+        13: {
+          kicker: '8月 · 第13天 · 西宁至兰州',
+          title: '温柔返程的收尾',
+          intro: '给还车和航班留足空间。今天的目标是干净利落地结束，而不是匆忙塞进最后一个景点。',
+          alert: '若租车合同要求兰州还车，就必须把车实际开回兰州。除非租车公司已同意西宁还车，或另有司机负责车辆，否则不要坐高铁。',
+          slots: [
+            ['08:00', '早餐＋从容打包', '检查房间、补满水，收齐每一张票、证件、充电器和纪念品。'],
+            ['可选09:00–10:30', '野生动物园或最后一杯西宁咖啡', '只有兰州时间缓冲非常充足时才选；不然就慢慢吃早餐并早点出发。'],
+            ['10:30–11:00', '最后车辆检查', '按合同加油到规定油量，清走垃圾，并录下车内外最后一段验车视频。'],
+            ['11:00', '西宁 → 兰州', '走主路；累了就停，并把抵达还车时间安排得保守一些。'],
+            ['目标14:30', '归还车辆', '准备好验车视频和加油小票；离开前核对还车报告。'],
+            ['还车后', '最后一碗面＋说再见', '尽量别把这一段订得太死，免得延误偷走你们最后的一餐。']
+          ],
+          couple: '给未来的我们写一句话：下一次想一起开车去哪里？'
+        }
+      };
+
+      const PREFERENCE_STORE = 'salt-and-starlight-preferences-v1';
+      const preferences = JSON.parse(localStorage.getItem(PREFERENCE_STORE) || '{}');
+      const savePreferences = () => localStorage.setItem(PREFERENCE_STORE, JSON.stringify(preferences));
+      let activeLanguage = preferences.language === 'zh' ? 'zh' : 'en';
+      let activeTheme = preferences.theme === 'dark' ? 'dark' : 'light';
+      const zh = {
+        nav_itinerary: '行程', nav_bookings: '预订', nav_budget: '预算', nav_intel: '实用信息', nav_packing: '打包',
+        hero_eyebrow: '13 天青海 + 甘肃情侣自驾', hero_title: '有你在，每一段路都更好。', hero_description: '一份可爱、从容、把一切都放在一起的旅行基地：丝路雄关、沙漠落日、翡翠般的盐湖、藏地文化，以及副驾上的一大堆零食。', driver: '司机', copilot: '副驾', trip_begins: '出发日期',
+        jump_itinerary: '13 天行程', jump_bookings: '去预订', jump_budget: '旅行账本', jump_intel: '攻略笔记', jump_packing: '可爱又聪明地打包', jump_share: '分享计划', jump_memories: '小小回忆',
+        import_title: '有一份共享旅行计划等你打开 ✦', import_description: '导入会覆盖当前浏览器中已保存的计划。', import_button: '导入共享计划', not_now: '稍后再说',
+        overview_kicker: '全景概览', overview_title: '一个站都不少，也不必硬撑着赶路。', overview_description: '你原本的 8 天环线完全保留；只是延长为 13 天，让每个原定停靠点都有足够余裕。', car_return_title: '还车方式提醒', car_return_description: '兰州还车意味着最后一天要从西宁开回兰州。只有改成西宁还车，或由其他人开车返回，你们才适合乘高铁。本计划严格保留你们指定的兰州取还车环线。',
+        count_caption: '你们的小小倒计时', metric_days: '天', metric_nights: '晚', metric_people: '旅行者', route_title: '你们的小小完整环线', route_description: '以舒适为先的顺序，仍保留原始愿望清单里的每一个地方。', route_button: '打开逐日行程 ↓',
+        itinerary_kicker: '真正的冒险 · 8 月版', itinerary_title: '完整路线，不赶路的 13 天行程。', itinerary_description: '点一下每天标题，就能打开带时间安排的详细指南。8 月天气、道路施工与客流可能临时变化——每个长途日出发前请查看实时导航、景区官方公告和交通服务热线 12328。',
+        booking_kicker: '车轮转动之前', booking_title: '预订指挥中心', booking_description: '一起把事情勾掉。这一页的内容会自动保存在当前浏览器中。', book_card_title: '出发前预订', book_card_description: '这些最容易因为拖到最后而造成坏惊喜。', road_card_title: '车辆 + 公路交接', road_card_description: '花两分钟做完这些，就能保护整趟旅行。', add_booking_label: '添加一条预订或待办', add_road_label: '添加一条道路待办', add_button: '+ 添加',
+        budget_kicker: '不尴尬的花钱专区', budget_title: '你们灵活的人民币预算。', budget_description: '先填可编辑的预估金额，再替换成实际预订价格。它是记录器，不代表当前价格。', trip_pot: '当前旅行基金', budget_saved: '已保存在当前浏览器。拿到实际预订价格后，随时填入。', traveller_count: '旅行人数', people_label: '人', show_split: '查看均摊', clear_numbers: '清空金额',
+        intel_kicker: '把调研变成真正有用的信息', intel_title: '每个重点停靠点的实用攻略。', intel_description: '这些是值得提前知道的细节，不是随机旅游冷知识。票务、通行和现场条件可能变化——预订前请打开官方来源确认。',
+        packing_kicker: '小东西，大不同', packing_title: '可爱地打包，也聪明地打包。', packing_description: '勾选已经装进包里的东西；再加上只有你们俩才会记得带的那些。', sun_pack_title: '防晒 + 盐湖 + 风', car_pack_title: '车上舒适包', love_pack_title: '约会 + 回忆', add_sun_label: '添加防晒物品', add_car_label: '添加车载物品', add_love_label: '添加情侣物品',
+        memories_kicker: '给你们两个人', memories_title: '给未来的自己留下一点点面包屑。', memories_description: '每天写下一句话，回到家再读时，这趟旅行会更美好。', memory_label: '今天的小回忆', save_memory: '保存我们的回忆 ♥', new_prompt: '再给我们一个 ✦',
+        share_kicker: '给你的副驾', share_title: '把你们真正填好的计划发过去。', share_description: '添加姓名、清单勾选、预算、自定义项目和小回忆后，创建一条私密快照链接。对方打开链接后，点一下“导入共享计划”。', make_share: '创建分享链接 ♥', share_label: '你的可分享旅行链接', copy_link: '复制链接', share_note: '这是一次快照，不是实时同步：有新改动后请重新创建并发送链接。任何拿到链接的人都能查看共享计划，所以只发给你的伴侣。',
+        sources_title: '出发前要再确认的官方链接', sources_description: '调研更新至 2026 年 7 月 30 日。价格、季节、预约、通行规则和道路状况可能改变——实际预约时请打开这些官方来源再确认。', open_day_guide: '打开当天详细指南 ↗', done: '完成', day_done: '标记第 {n} 天已完成', stay_prefix: '住宿：', finish_prefix: '结束：', priority: '重要',
+        pick_date: '选一个日期 ✦', pick_date_note: '在上方设定出发日期，心动倒计时交给我们。', days_to_go: '还有 {days} 天出发', days_to_go_note: '歌单、零食和星空都越来越近了。', tomorrow: '明天出发！', tomorrow_note: '相机充电，零食装包，尽量早点睡。', today: '今天就是公路旅行日！', today_note: '去制造一点美好的小麻烦吧。', started: '旅程已经开始了 ✦', started_note: '继续收集回忆吧。',
+        saved_memory: '已保存。未来的你们一定会很喜欢看到它。', blank_memory: '空白的小页面也保存好了——想写的时候再写就好。', share_copied: '已复制！把链接发给你的副驾吧 ♥', share_copy_manual: '链接已选中——请手动复制后发送给你的副驾。', share_too_large: '这份快照内容太多，无法生成可靠链接。删掉几条过长的自定义备注后再试。', share_ready: '快照已准备好。复制链接后发给你的副驾吧。', split_each: '{count} 人均摊：¥{amount}（不含各自想买的小惊喜）',
+        page_title: '盐与星光 — 我们的青甘公路旅行', brand: '盐与星光', footer: '献给负责副驾放歌的人，以及总说“我们快到了”的司机。', reset: '重置这个旅行计划', reset_confirm: '要重置此浏览器中保存的所有姓名、清单、预算和回忆吗？', import_confirm: '要导入这份共享计划，并替换当前浏览器已保存的计划吗？'
+      };
+      const dayCardsZh = {
+        1: { badge: '♥ 温柔抵达', title: '兰州：向黄河问好', drive: '✦ 机场 + 市区轻松日', bullets: ['取车后，先拍视频记录车身每一面和每个轮胎。', '按预约时间去甘肃省博物馆，看看铜奔马。', '牛肉面、中山桥、黄河边慢慢散步。'], tip: '小约会：偷偷替对方挑一份零食，先别告诉 TA。', stay: '兰州' },
+        2: { badge: '☀ 山与云', title: '兰州 → 张掖', drive: '↗ 约 510 公里 · 6–7 小时', bullets: ['早些出发，走主路线；风景只在正规停靠点欣赏。', '从合法观景点看祁连山景色。', '傍晚到七彩丹霞看日落，再回张掖悠闲吃晚饭。'], tip: '目标是赶在最后入园时间前抵达，而不只是冲着日落。', stay: '张掖' },
+        3: { badge: '⌂ 丝路', title: '张掖 → 嘉峪关', drive: '↗ 约 230 公里 · 3 小时', bullets: ['前一晚看日落后，今天特意安排短车程。', '慢慢逛嘉峪关关城。', '金色时刻逛逛城区，早点休息。'], tip: '在关城拍一张“姿势一样、世纪不同”的照片。', stay: '嘉峪关' },
+        4: { badge: '◌ 沙漠艺术', title: '嘉峪关 → 瓜州 → 敦煌', drive: '↗ 约 390 公里 · 5–6 小时', bullets: ['早餐后离开嘉峪关。', '在瓜州停靠大地之子／戈壁雕塑。', '继续前往敦煌，入住后逛沙州夜市。'], tip: '进入长距离空旷路段前，先加油、补水、上洗手间。', stay: '敦煌' },
+        5: { badge: '✧ 跨越千年', title: '莫高窟 + 鸣沙山月牙泉', drive: '✦ 仅市内短途', bullets: ['按预约时间提前 30 分钟抵达莫高窟数字展示中心。', '优先抢正常票；应急票只当备用方案。', '下午休息，傍晚凉快时去鸣沙山月牙泉。'], tip: '莫高窟洞窟内禁止拍照和录像——好好沉浸其中。', stay: '敦煌' },
+        6: { badge: '◈ 蓝绿秘境', title: '敦煌 → 大柴旦', drive: '↗ 约 350 公里 · 5–6 小时', bullets: ['这是看似偏远的一天：休息好再出发，尽早加油，手机保持有电。', '先到大柴旦入住。', '若时间和入园条件合适，在光线柔和时去翡翠湖。'], tip: '8 月提示：早上确认道路和景区状态；盐湖只走标识游客路线。', stay: '大柴旦' },
+        7: { badge: '☁ 缓冲日', title: '翡翠湖 → 德令哈', drive: '↗ 约 210 公里 · 3–4 小时', bullets: ['若昨天天气或时间不理想，早上可再去翡翠湖。', '短途前往德令哈。', '休息、洗衣、补零食，为下一段长途转场做准备。'], tip: '这个恢复日，是让浪漫不被赶路磨掉的关键。', stay: '德令哈' },
+        8: { badge: '↔ 一路清晰', title: '德令哈 → 格尔木', drive: '↗ 约 320 公里 · 4–5 小时', bullets: ['节奏适中的转场日：早点出发，只有完全休息好才换司机。', '提前下载离线地图，只在正规服务区停，把水和零食放在手边。', '抵达后整理车辆、好好睡一觉——明天单独留给察尔汗。'], tip: '如果天气或疲劳改变计划，就多住一晚，绝不抢天黑。', stay: '格尔木' },
+        9: { badge: '❋ 盐的世界', title: '察尔汗盐湖一日游', drive: '↔ 往返约 120–150 公里', bullets: ['格尔木 → 察尔汗盐湖 → 格尔木。', '从指定游客入口进入，遵守当天的摆渡车和入园规则。', '给盐花和万丈盐桥留足时间。'], tip: '早上先查通行公告——下雨可能影响盐壳路。别走工业区捷径。', stay: '格尔木' },
+        10: { badge: '↔ 漫长但从容', title: '格尔木 → 茶卡', drive: '↗ 约 470 公里 · 5½–7 小时', bullets: ['今天是第二个明确的转场日：只有完全休息好才换司机。', '提前下载离线地图，只在正规服务区停，把水和零食放在手边。', '到达后吃饭、睡觉——盐湖留给明天早上。'], tip: '为 8 月天气／施工预留 60–90 分钟；绝不和暮色赛跑。', stay: '茶卡' },
+        11: { badge: '⌁ 镜面湖水', title: '茶卡盐湖 → 青海湖', drive: '↗ 约 170 公里 · 3–4 小时', bullets: ['早点去茶卡，光线更凉爽、人更少；倒影取决于天气。', '只走官方步道，并查看当天开放公告。', '前往指定的青海湖生态观景点／黑马河一带。'], tip: '选择合法生态观景点比走非正规草原小路更安静、更安全。', stay: '青海湖／黑马河' },
+        12: { badge: '☸ 安静敬意', title: '青海湖 → 塔尔寺 → 西宁', drive: '↗ 约 300 公里 · 5–6 小时', bullets: ['早上看湖，再留足时间前往塔尔寺。', '穿着得体；宗教区域遵守禁拍标志。', '到西宁吃晚饭；如果仍有兴致再去青海省博物馆。'], tip: '轻轻聊一句“今天最意外的是什么？”，会成为很好的最后一晚仪式。', stay: '西宁' },
+        13: { badge: '♥ 带着回忆回家', title: '西宁 → 兰州', drive: '↗ 约 220 公里 · 3–4 小时', bullets: ['按约定把租车开回兰州还车。', '按合同油量加油；交车前拍最后一段视频。', '再吃一碗牛肉面，庆祝这趟特别棒的公路旅行。'], tip: '若当天还要坐飞机，请预留很大的延误缓冲，或在兰州加住一晚。', stay: '兰州' }
+      };
+      const defaultCopyZh = {
+        'booking-list': ['预约莫高窟——优先普通票，应急票作备选', '预订全程 12 晚可免费取消的酒店', '确认租车为兰州还车、无限公里并已投保', '预约／确认鸣沙山、茶卡和博物馆的入园时段', '离线保存每份确认单、酒店地址和紧急联系人', '挑好副驾歌单'],
+        'road-list': ['确认两位驾驶员都合法符合这辆租车的驾驶条件', '拍照／录像记录车辆：车顶、轮胎、车玻璃、油量、仪表盘及每处划痕', '离开 Wi‑Fi 前下载离线地图和每日路线', '在市区买好水、零食、防晒和小型急救包', '约定：不疲劳驾驶、不走工业道路捷径、不在夜间赶路', '一起定一个每天“最晚几点停止开车”的时间'],
+        'sun-pack': ['SPF 50+ 防晒霜 + 润唇膏', '防紫外线太阳镜 + 宽檐帽', '轻薄围巾／防风外层', '防水鞋套或备用鞋', '可重复使用水瓶', '保湿霜 + 生理盐水喷雾'],
+        'car-pack': ['离线地图 + 充电宝', '车载充电器 + 每人一根充电线', '酒店地址纸质备份', '真正顶饱的蛋白质零食', '急救包 + 常用处方药', '纸巾 + 湿巾 + 密封袋'],
+        'love-pack': ['相机／一次性胶片相机', '给对方的一份小惊喜', '一套好看的晚餐穿搭', '已下载的离线歌单', '日记本或手机上的这个页面', '给一件傻乎乎纪念品留出空间']
+      };
+      const intelCopyZh = [
+        ['兰州博物馆', '甘肃省博物馆免费开放，但需要实名预约。官方指引显示周二至周日开馆，所以把它作为第 1 天的优先事项，不要留作“有空再去”。'],
+        ['七彩丹霞', '日落值得看，但要留出充足入园缓冲。官方景区实行实名入园和每日限流；2026 年票价已有变动，请不要沿用旧的 ¥95。'],
+        ['嘉峪关 + 瓜州', '把它们拆成完整的一天，体验会更好：先看关城历史，再看戈壁雕塑。多带水、尽早加油，把路程当作旅程，而不是比赛。'],
+        ['莫高窟', '直接通过官方渠道预约，优先普通票，并提前 30 分钟抵达数字展示中心。洞窟内禁止拍照／录像；应急票是参观洞窟更少的备选方案，不是“便宜版”。'],
+        ['鸣沙山 + 月牙泉', '接近日落时去，沙更凉、光线更柔和。旺季使用官方线上预约；一起决定骑骆驼是否值得作为特别体验，而不是默认加购。'],
+        ['翡翠湖 + 察尔汗盐湖', '盐湖的通行方式、摆渡车和拍照区域可能变动。只走标识游客路线，不要开上未经允许的盐壳或工业道路；察尔汗单独留在格尔木的一天。'],
+        ['茶卡盐湖', '倒影取决于风和天气，不是滤镜。官方平台会发布季节性实时公告、实名入园与天气闭园信息。早晨更平静；当周请确认最后入园时间。'],
+        ['青海湖', '使用指定生态观景点或有资质的游客服务设施。青海湖是受保护景观，正在建设免费生态观景点；非正规的“牧民小道”可能违法、不安全，也会破坏草场。'],
+        ['塔尔寺 + 西宁', '在塔尔寺，以标识和工作人员指引为准：穿着朴素、说话放轻，禁拍处不拍。若已预约且仍有精力，青海省博物馆很适合作为最后一站。'],
+        ['高海拔不可小看', '多补水、分层穿衣、清淡饮食，前几个高海拔夜晚节奏放慢。若任一人出现剧烈头痛、意识模糊、静息气短或症状加重，请下降海拔并就医。'],
+        ['驾车资格', '若任一驾驶员持外国驾照：仅有 IDP 不能在中国大陆开车。付款租车前，先确认临时中国驾照及租车公司要求。'],
+        ['天气 + 导航', '山地天气、大风与临时封闭总能打败静态行程。下载离线地图、互相分享当天路线，前一晚决定天气是否支持次日计划。']
+      ];
+      const sourceCopyZh = ['莫高窟官方预约', '莫高窟 2026 游客须知', '鸣沙山 2026 公告', '张掖七彩丹霞入园信息', '张掖 2026 票价公告', '茶卡盐湖官网', '格尔木市政府：察尔汗游客更新', '青海湖生态观景点', '甘肃省博物馆', '青海省博物馆预约', '中国临时驾驶许可', '中国驾车指南'];
+      const routeStopsZh = ['兰州', '张掖', '嘉峪关', '瓜州', '敦煌', '大柴旦', '德令哈', '格尔木', '察尔汗', '茶卡', '青海湖', '塔尔寺', '西宁', '兰州'];
+      const prompts = {
+        en: ['Tonight’s question: What was your favourite tiny moment today?', 'Tonight’s question: What did I do today that made you feel cared for?', 'Tonight’s question: Which view would you put in a snow globe?', 'Tonight’s question: What snack deserves to come home with us?', 'Tonight’s question: What is one thing we would do differently next time?', 'Tonight’s question: What made us laugh hardest today?'],
+        zh: ['今晚的问题：今天最喜欢的一个小瞬间是什么？', '今晚的问题：我今天做了什么，让你感到被好好照顾？', '今晚的问题：哪一处风景值得放进水晶球里？', '今晚的问题：哪一种零食值得带回家？', '今晚的问题：下次我们会想做得不一样的一件事是什么？', '今晚的问题：今天什么让我们笑得最厉害？']
+      };
+      const format = (text, values) => Object.entries(values).reduce((result, [key, value]) => result.replaceAll('{' + key + '}', value), text);
+      const t = (key, fallback = '') => activeLanguage === 'zh' ? (zh[key] || fallback) : fallback;
+
+      const dayCardsEn = {};
+      function captureDayCards() {
+        document.querySelectorAll('.day-card').forEach(card => {
+          const day = Number(card.dataset.day);
+          if (dayCardsEn[day]) return;
+          const numberSpans = card.querySelectorAll('.day-number span');
+          const titleButton = card.querySelector('.day-title');
+          dayCardsEn[day] = {
+            badge: numberSpans[1].textContent,
+            title: Array.from(titleButton.childNodes).find(node => node.nodeType === Node.TEXT_NODE).textContent.trim(),
+            drive: card.querySelector('.drive').textContent,
+            bullets: Array.from(card.querySelectorAll('li')).map(item => item.textContent),
+            tip: card.querySelector('.day-tip').textContent,
+            stay: card.querySelector('.stay').textContent.replace(/^(Sleep|Finish):\s*/, '')
+          };
+        });
+      }
+      function renderDayCards() {
+        captureDayCards();
+        document.querySelectorAll('.day-card').forEach(card => {
+          const day = Number(card.dataset.day);
+          const copy = activeLanguage === 'zh' ? dayCardsZh[day] : dayCardsEn[day];
+          if (!copy) return;
+          const numberSpans = card.querySelectorAll('.day-number span');
+          numberSpans[0].textContent = activeLanguage === 'zh' ? '第 ' + String(day).padStart(2, '0') + ' 天' : 'Day ' + String(day).padStart(2, '0');
+          numberSpans[1].textContent = copy.badge;
+          const titleButton = card.querySelector('.day-title');
+          titleButton.innerHTML = safe(copy.title) + '<span class="day-title-hint">' + safe(t('open_day_guide', 'Open the full day guide ↗')) + '</span>';
+          card.querySelector('.drive').textContent = copy.drive;
+          card.querySelectorAll('li').forEach((item, index) => { item.textContent = copy.bullets[index] || ''; });
+          card.querySelector('.day-tip').textContent = copy.tip;
+          card.querySelector('.stay').textContent = (day === 13 ? t('finish_prefix', 'Finish: ') : t('stay_prefix', 'Sleep: ')) + copy.stay;
+          const check = card.querySelector('.day-check');
+          const checkbox = check.querySelector('input');
+          checkbox.setAttribute('aria-label', format(t('day_done', 'Mark day {n} complete'), {n: day}));
+          const labelText = Array.from(check.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+          if (labelText) labelText.nodeValue = ' ' + t('done', 'Done');
+        });
+      }
+      function renderIntel() {
+        document.querySelectorAll('.intel').forEach((card, index) => {
+          const title = card.querySelector('h3'); const body = card.querySelector('p');
+          if (title.dataset.en === undefined) { title.dataset.en = title.textContent; body.dataset.en = body.textContent; }
+          if (activeLanguage === 'zh' && intelCopyZh[index]) { title.textContent = intelCopyZh[index][0]; body.textContent = intelCopyZh[index][1]; }
+          else { title.textContent = title.dataset.en; body.textContent = body.dataset.en; }
+        });
+      }
+      function renderSources() {
+        document.querySelectorAll('.source-link').forEach((link, index) => {
+          const textNode = Array.from(link.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+          if (!textNode) return;
+          if (link.dataset.en === undefined) link.dataset.en = textNode.nodeValue;
+          textNode.nodeValue = activeLanguage === 'zh' ? sourceCopyZh[index] : link.dataset.en;
+        });
+      }
+      function renderBudgetLabels() {
+        const heads = document.querySelectorAll('.budget-table th');
+        if (heads[0]) { if (heads[0].dataset.en === undefined) heads[0].dataset.en = heads[0].textContent; heads[0].textContent = activeLanguage === 'zh' ? '两个人合计' : heads[0].dataset.en; }
+        if (heads[1]) { if (heads[1].dataset.en === undefined) heads[1].dataset.en = heads[1].textContent; heads[1].textContent = activeLanguage === 'zh' ? '人民币（¥）' : heads[1].dataset.en; }
+        const labels = [
+          ['Rental car + basic insurance', '(13 days)'], ['Fuel', '(about 3,500 km, confirm)'], ['Tolls + parking', ''], ['Attractions + shuttles', ''], ['Hotels', '(12 nights)'], ['Food, coffee + treats', ''], ['Emergency / sweet extras', '']
+        ];
+        const zhLabels = [
+          ['租车 + 基础保险', '（13 天）'], ['油费', '（约 3,500 公里，待确认）'], ['过路费 + 停车费', ''], ['景点门票 + 景区接驳', ''], ['酒店', '（12 晚）'], ['餐饮、咖啡 + 小奖励', ''], ['应急备用／甜蜜加项', '']
+        ];
+        document.querySelectorAll('.budget-table tbody tr td:first-child').forEach((cell, index) => {
+          const textNode = Array.from(cell.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+          const hint = cell.querySelector('.budget-hint');
+          if (textNode) { if (cell.dataset.enLabel === undefined) cell.dataset.enLabel = textNode.nodeValue; textNode.nodeValue = ' ' + (activeLanguage === 'zh' ? zhLabels[index][0] : labels[index][0]) + ' '; }
+          if (hint) { if (hint.dataset.en === undefined) hint.dataset.en = hint.textContent; hint.textContent = activeLanguage === 'zh' ? zhLabels[index][1] : hint.dataset.en; }
+        });
+      }
+      function applyStaticCopy() {
+        document.documentElement.lang = activeLanguage === 'zh' ? 'zh-CN' : 'en';
+        document.title = activeLanguage === 'zh' ? zh.page_title : 'Salt & Starlight — Our Qing-Gan Road Trip';
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          if (element.dataset.en === undefined) element.dataset.en = element.textContent;
+          element.textContent = activeLanguage === 'zh' ? (zh[element.dataset.i18n] || element.dataset.en) : element.dataset.en;
+        });
+        const placeholderCopy = {
+          'driver-name': ['Your name', '你的名字'], 'copilot-name': ['Her name', '她的名字'], 'booking-add': ['Add a booking or task', '添加预订或待办'], 'road-add': ['Add a road task', '添加道路待办'], 'sun-add': ['Add an item', '添加物品'], 'car-add': ['Add an item', '添加物品'], 'love-add': ['Add an item', '添加物品'], 'memory': ['Today, I loved when you…', '今天，我最喜欢的是你……']
+        };
+        Object.entries(placeholderCopy).forEach(([id, values]) => { const field = document.getElementById(id); if (field) field.placeholder = values[activeLanguage === 'zh' ? 1 : 0]; });
+        const nav = document.querySelector('.hero-nav'); if (nav) nav.setAttribute('aria-label', activeLanguage === 'zh' ? '主导航' : 'Primary navigation');
+        const jumpbar = document.querySelector('.jumpbar'); if (jumpbar) jumpbar.setAttribute('aria-label', activeLanguage === 'zh' ? '快捷链接' : 'Quick links');
+        const coupleRow = document.querySelector('.couple-row'); if (coupleRow) coupleRow.setAttribute('aria-label', activeLanguage === 'zh' ? '自定义你们的旅行' : 'Personalize your trip');
+        const preferenceControls = document.querySelector('.preference-controls'); if (preferenceControls) preferenceControls.setAttribute('aria-label', activeLanguage === 'zh' ? '语言与主题' : 'Language and colour theme');
+        const languageButtons = document.querySelectorAll('[data-language-choice]');
+        if (languageButtons[0]) languageButtons[0].setAttribute('aria-label', activeLanguage === 'zh' ? '切换为英文' : 'Use English');
+        if (languageButtons[1]) languageButtons[1].setAttribute('aria-label', activeLanguage === 'zh' ? '使用中文' : 'Use Chinese');
+        const themeButtons = document.querySelectorAll('[data-theme-choice]');
+        if (themeButtons[0]) themeButtons[0].setAttribute('aria-label', activeLanguage === 'zh' ? '切换到浅色模式' : 'Use light theme');
+        if (themeButtons[1]) themeButtons[1].setAttribute('aria-label', activeLanguage === 'zh' ? '切换到深色模式' : 'Use dark theme');
+        const guideClose = document.getElementById('close-day-guide'); if (guideClose) guideClose.setAttribute('aria-label', activeLanguage === 'zh' ? '关闭详细每日指南' : 'Close detailed day guide');
+        const brand = document.querySelector('.brand');
+        const brandText = brand && Array.from(brand.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+        if (brandText) { if (brand.dataset.en === undefined) brand.dataset.en = brandText.nodeValue; brandText.nodeValue = activeLanguage === 'zh' ? ' ' + zh.brand : brand.dataset.en; }
+        const footer = document.querySelector('footer');
+        const footerText = footer && Array.from(footer.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+        if (footerText) { if (footer.dataset.en === undefined) footer.dataset.en = footerText.nodeValue; footerText.nodeValue = activeLanguage === 'zh' ? zh.footer + ' ' : footer.dataset.en; }
+        document.querySelectorAll('.stop').forEach((stop, index) => { if (stop.dataset.en === undefined) stop.dataset.en = stop.textContent; stop.textContent = activeLanguage === 'zh' ? routeStopsZh[index] : stop.dataset.en; });
+        renderBudgetLabels(); renderIntel(); renderSources();
+      }
+      function applyTheme(theme) {
+        activeTheme = theme === 'dark' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = activeTheme;
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', activeTheme === 'dark' ? '#1f1829' : '#3d315b');
+        document.querySelectorAll('[data-theme-choice]').forEach(button => { const selected = button.dataset.themeChoice === activeTheme; button.setAttribute('aria-pressed', String(selected)); });
+      }
+      function applyLanguage(language) {
+        activeLanguage = language === 'zh' ? 'zh' : 'en';
+        applyStaticCopy();
+        document.querySelectorAll('[data-language-choice]').forEach(button => { const selected = button.dataset.languageChoice === activeLanguage; button.setAttribute('aria-pressed', String(selected)); });
+        renderDayCards();
+        if (typeof defaults !== 'undefined') Object.keys(defaults).forEach(renderList);
+        if (typeof updateCountdown === 'function') updateCountdown();
+        if (typeof updateTravellerVisual === 'function') updateTravellerVisual();
+        const promptText = document.getElementById('love-prompt-text'); if (promptText && typeof promptIndex !== 'undefined') promptText.textContent = prompts[activeLanguage][promptIndex];
+      }
 
       function encodeSharedPlan(payload) {
         const bytes = new TextEncoder().encode(JSON.stringify(payload));
@@ -502,30 +955,30 @@
       }
 
       document.querySelectorAll('.save-field').forEach(field => {
-        field.value = state[field.id] || '';
-        field.addEventListener('input', () => { state[field.id] = field.value; save(); if (field.id === 'trip-date') updateCountdown(); });
-        field.addEventListener('change', () => { state[field.id] = field.value; save(); if (field.id === 'trip-date') updateCountdown(); });
+        field.value = state[field.id] ?? field.value;
+        field.addEventListener('input', () => { state[field.id] = field.value; save(); if (field.id === 'trip-date') updateCountdown(); if (field.id === 'traveller-count') updateTravellerVisual(); });
+        field.addEventListener('change', () => { state[field.id] = field.value; save(); if (field.id === 'trip-date') updateCountdown(); if (field.id === 'traveller-count') updateTravellerVisual(); });
       });
 
       function updateCountdown() {
         const target = document.getElementById('trip-date').value;
         const title = document.getElementById('countdown');
         const note = document.getElementById('countdown-note');
-        if (!target) { title.textContent = 'Pick a date ✦'; note.textContent = 'Set the departure date above and we will do the butterflies for you.'; return; }
+        if (!target) { title.textContent = t('pick_date', 'Pick a date ✦'); note.textContent = t('pick_date_note', 'Set the departure date above and we will do the butterflies for you.'); return; }
         const today = new Date(); today.setHours(0, 0, 0, 0);
         const trip = new Date(target + 'T00:00:00');
         const days = Math.round((trip - today) / 86400000);
-        if (days > 1) { title.textContent = days + ' days to go'; note.textContent = 'Your playlist, snacks and stargazing are getting closer.'; }
-        else if (days === 1) { title.textContent = 'Tomorrow!'; note.textContent = 'Charge the camera. Pack the snacks. Try to sleep.'; }
-        else if (days === 0) { title.textContent = 'It is road-trip day!'; note.textContent = 'Go make the good kind of trouble.'; }
-        else { title.textContent = 'The trip has begun ✦'; note.textContent = 'Keep the memories coming.'; }
+        if (days > 1) { title.textContent = activeLanguage === 'zh' ? format(t('days_to_go'), {days}) : days + ' days to go'; note.textContent = t('days_to_go_note', 'Your playlist, snacks and stargazing are getting closer.'); }
+        else if (days === 1) { title.textContent = t('tomorrow', 'Tomorrow!'); note.textContent = t('tomorrow_note', 'Charge the camera. Pack the snacks. Try to sleep.'); }
+        else if (days === 0) { title.textContent = t('today', 'It is road-trip day!'); note.textContent = t('today_note', 'Go make the good kind of trouble.'); }
+        else { title.textContent = t('started', 'The trip has begun ✦'); note.textContent = t('started_note', 'Keep the memories coming.'); }
       }
       updateCountdown();
 
       const defaults = {
         'booking-list': [
           ['Reserve Mogao Caves — regular ticket first, emergency as backup', 'priority'],
-          ['Book all 11 hotel nights with free cancellation where possible', 'priority'],
+          ['Book all 12 hotel nights with free cancellation where possible', 'priority'],
           ['Confirm the rental car is a Lanzhou return, unlimited km, and insured', 'priority'],
           ['Reserve/confirm Mingsha Mountain, Chaka and museum entry slots', 'priority'],
           ['Save every confirmation, hotel address and emergency contact offline', ''],
@@ -548,7 +1001,12 @@
       function renderList(id) {
         const container = document.getElementById(id); if (!container) return;
         const list = getList(id); state[id] = list;
-        container.innerHTML = list.map((item, index) => '<div class="check-item ' + (item.done ? 'done ' : '') + (item.custom ? 'is-custom' : '') + '"><input type="checkbox" id="' + id + '-' + index + '" data-list="' + id + '" data-index="' + index + '" ' + (item.done ? 'checked' : '') + '><label for="' + id + '-' + index + '">' + safe(item.text) + '</label>' + (item.tag ? '<span class="priority">' + safe(item.tag) + '</span>' : '') + (item.custom ? '<button class="delete-item" type="button" data-remove-list="' + id + '" data-remove-index="' + index + '" aria-label="Delete ' + safe(item.text) + '">×</button>' : '') + '</div>').join('');
+        container.innerHTML = list.map((item, index) => {
+          const label = !item.custom && activeLanguage === 'zh' && defaultCopyZh[id] && defaultCopyZh[id][index] ? defaultCopyZh[id][index] : (!item.custom && defaults[id] && defaults[id][index] ? defaults[id][index][0] : item.text);
+          const priority = item.tag ? (activeLanguage === 'zh' ? t('priority', '重要') : item.tag) : '';
+          const removeLabel = activeLanguage === 'zh' ? '删除 ' + label : 'Delete ' + label;
+          return '<div class="check-item ' + (item.done ? 'done ' : '') + (item.custom ? 'is-custom' : '') + '"><input type="checkbox" id="' + id + '-' + index + '" data-list="' + id + '" data-index="' + index + '" ' + (item.done ? 'checked' : '') + '><label for="' + id + '-' + index + '">' + safe(label) + '</label>' + (priority ? '<span class="priority">' + safe(priority) + '</span>' : '') + (item.custom ? '<button class="delete-item" type="button" data-remove-list="' + id + '" data-remove-index="' + index + '" aria-label="' + safe(removeLabel) + '">×</button>' : '') + '</div>';
+        }).join('');
         container.querySelectorAll('input').forEach(box => box.addEventListener('change', () => { const list = getList(box.dataset.list); list[Number(box.dataset.index)].done = box.checked; state[box.dataset.list] = list; save(); renderList(box.dataset.list); }));
         container.querySelectorAll('[data-remove-list]').forEach(button => button.addEventListener('click', () => { const list = getList(button.dataset.removeList); list.splice(Number(button.dataset.removeIndex), 1); state[button.dataset.removeList] = list; save(); renderList(button.dataset.removeList); }));
       }
@@ -573,23 +1031,43 @@
 
       const budgetInputs = document.querySelectorAll('.budget-input');
       budgetInputs.forEach(input => { input.value = state['budget-' + input.dataset.key] ?? input.value; input.addEventListener('input', () => { state['budget-' + input.dataset.key] = input.value; save(); updateBudget(); }); });
-      function updateBudget() { const total = Array.from(budgetInputs).reduce((sum, input) => sum + (Number(input.value) || 0), 0); document.getElementById('budget-total').textContent = '¥' + total.toLocaleString('en-US'); return total; }
+      let splitShown = false;
+      function travellerCountValue() {
+        const field = document.getElementById('traveller-count');
+        const count = Math.max(1, Math.min(20, Math.round(Number(field.value) || 2)));
+        if (field.value !== String(count)) field.value = String(count);
+        return count;
+      }
+      function renderSplitNote() {
+        if (!splitShown) return;
+        const total = Array.from(budgetInputs).reduce((sum, input) => sum + (Number(input.value) || 0), 0);
+        const people = travellerCountValue();
+        const locale = activeLanguage === 'zh' ? 'zh-CN' : 'en-US';
+        const amount = (total / people).toLocaleString(locale, {maximumFractionDigits: 0});
+        document.getElementById('split-note').textContent = activeLanguage === 'zh' ? format(t('split_each'), {count: people, amount}) : 'Split ' + people + ' ways: ¥' + amount + ' (before any personal splurges).';
+      }
+      function updateTravellerVisual() {
+        const people = travellerCountValue();
+        const field = document.getElementById('traveller-count');
+        state['traveller-count'] = String(people); save();
+        document.getElementById('traveller-metric').textContent = people;
+        renderSplitNote();
+      }
+      function updateBudget() {
+        const total = Array.from(budgetInputs).reduce((sum, input) => sum + (Number(input.value) || 0), 0);
+        document.getElementById('budget-total').textContent = '¥' + total.toLocaleString(activeLanguage === 'zh' ? 'zh-CN' : 'en-US');
+        renderSplitNote();
+        return total;
+      }
       updateBudget();
-      document.getElementById('split-total').addEventListener('click', () => { const half = updateBudget() / 2; document.getElementById('split-note').textContent = 'Half each: ¥' + half.toLocaleString('en-US', {maximumFractionDigits: 0}) + ' (before any personal splurges).'; });
-      document.getElementById('clear-budget').addEventListener('click', () => { budgetInputs.forEach(input => { input.value = '0'; state['budget-' + input.dataset.key] = '0'; }); save(); updateBudget(); document.getElementById('split-note').textContent = ''; });
+      updateTravellerVisual();
+      document.getElementById('split-total').addEventListener('click', () => { splitShown = true; updateBudget(); });
+      document.getElementById('clear-budget').addEventListener('click', () => { budgetInputs.forEach(input => { input.value = '0'; state['budget-' + input.dataset.key] = '0'; }); splitShown = false; save(); updateBudget(); document.getElementById('split-note').textContent = ''; });
 
       const memory = document.getElementById('memory'); memory.value = state.memory || '';
-      document.getElementById('memory-form').addEventListener('submit', event => { event.preventDefault(); state.memory = memory.value; save(); document.getElementById('memory-saved').textContent = memory.value.trim() ? 'Saved. Future-you is going to love this.' : 'A blank little page is saved too—write whenever it feels right.'; });
-      const prompts = [
-        'Tonight’s question: What was your favourite tiny moment today?',
-        'Tonight’s question: What did I do today that made you feel cared for?',
-        'Tonight’s question: Which view would you put in a snow globe?',
-        'Tonight’s question: What snack deserves to come home with us?',
-        'Tonight’s question: What is one thing we would do differently next time?',
-        'Tonight’s question: What made us laugh hardest today?'
-      ];
+      document.getElementById('memory-form').addEventListener('submit', event => { event.preventDefault(); state.memory = memory.value; save(); document.getElementById('memory-saved').textContent = memory.value.trim() ? t('saved_memory', 'Saved. Future-you is going to love this.') : t('blank_memory', 'A blank little page is saved too—write whenever it feels right.'); });
       let promptIndex = 0;
-      document.getElementById('new-prompt').addEventListener('click', () => { promptIndex = (promptIndex + 1 + Math.floor(Math.random() * (prompts.length - 1))) % prompts.length; document.getElementById('love-prompt-text').textContent = prompts[promptIndex]; });
+      document.getElementById('new-prompt').addEventListener('click', () => { const pool = prompts[activeLanguage]; promptIndex = (promptIndex + 1 + Math.floor(Math.random() * (pool.length - 1))) % pool.length; document.getElementById('love-prompt-text').textContent = pool[promptIndex]; });
       const shareLinkField = document.getElementById('share-link');
       const shareStatus = document.getElementById('share-status');
       const shareLinkWrap = document.getElementById('share-link-wrap');
@@ -604,9 +1082,9 @@
           } else {
             document.execCommand('copy');
           }
-          shareStatus.textContent = 'Copied! Send that link to your co-pilot ♥';
+          shareStatus.textContent = t('share_copied', 'Copied! Send that link to your co-pilot ♥');
         } catch (error) {
-          shareStatus.textContent = 'The link is selected—copy it manually, then send it to your co-pilot.';
+          shareStatus.textContent = t('share_copy_manual', 'The link is selected—copy it manually, then send it to your co-pilot.');
         }
       }
       document.getElementById('make-share-link').addEventListener('click', () => {
@@ -615,18 +1093,18 @@
         if (link.length > 7000) {
           shareLinkWrap.hidden = false;
           shareLinkField.value = '';
-          shareStatus.textContent = 'This snapshot is too large for a reliable link. Remove a few long custom notes, then try again.';
+          shareStatus.textContent = t('share_too_large', 'This snapshot is too large for a reliable link. Remove a few long custom notes, then try again.');
           return;
         }
         shareLinkField.value = link;
         shareLinkWrap.hidden = false;
-        shareStatus.textContent = 'Your snapshot is ready. Copy it, then send it to your co-pilot.';
+        shareStatus.textContent = t('share_ready', 'Your snapshot is ready. Copy it, then send it to your co-pilot.');
         copyShareLink();
       });
       document.getElementById('copy-share-link').addEventListener('click', copyShareLink);
       document.getElementById('import-share').addEventListener('click', () => {
         if (!pendingSharedPlan) return;
-        if (!confirm('Import this shared plan and replace the planner currently saved in this browser?')) return;
+        if (!confirm(t('import_confirm', 'Import this shared plan and replace the planner currently saved in this browser?'))) return;
         Object.keys(state).forEach(key => delete state[key]);
         Object.assign(state, pendingSharedPlan);
         save();
@@ -647,7 +1125,7 @@
       const guideTimeline = document.getElementById('guide-timeline');
       const guideCoupleNote = document.getElementById('guide-couple-note');
       function openDayGuide(dayNumber) {
-        const guide = dailyGuides[dayNumber];
+        const guide = (activeLanguage === 'zh' ? dailyGuidesZh : dailyGuides)[dayNumber];
         if (!guide) return;
         guideKicker.textContent = guide.kicker;
         guideTitle.textContent = guide.title;
@@ -664,7 +1142,11 @@
       document.querySelectorAll('[data-open-day]').forEach(button => button.addEventListener('click', () => openDayGuide(button.dataset.openDay)));
       document.getElementById('close-day-guide').addEventListener('click', () => dayGuideDialog.close());
       dayGuideDialog.addEventListener('click', event => { if (event.target === dayGuideDialog) dayGuideDialog.close(); });
-      document.getElementById('reset-site').addEventListener('click', () => { if (confirm('Reset all saved names, checklists, budget and memories on this browser?')) { localStorage.removeItem(STORE); location.reload(); } });
+      document.querySelectorAll('[data-language-choice]').forEach(button => button.addEventListener('click', () => { preferences.language = button.dataset.languageChoice; savePreferences(); applyLanguage(preferences.language); }));
+      document.querySelectorAll('[data-theme-choice]').forEach(button => button.addEventListener('click', () => { preferences.theme = button.dataset.themeChoice; savePreferences(); applyTheme(preferences.theme); }));
+      document.getElementById('reset-site').addEventListener('click', () => { if (confirm(t('reset_confirm', 'Reset all saved names, checklists, budget and memories on this browser?'))) { localStorage.removeItem(STORE); location.reload(); } });
+      applyTheme(activeTheme);
+      applyLanguage(activeLanguage);
     })();
   </script>
 </body>
