@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3d315b">
+  <title>Salt &amp; Starlight — Our Qing-Gan Road Trip</title>
+  <style>
+    :root {
+      --ink: #312942;
+      --muted: #756d82;
+      --cream: #fff9f2;
+      --paper: #fffdf9;
+      --pink: #ef8f9b;
+      --coral: #ee775f;
+      --peach: #ffd8c4;
+      --lavender: #ded7ff;
+      --violet: #7c6697;
+      --night: #3d315b;
+      --blue: #a9d9ed;
+      --mint: #c7e8d7;
+      --line: #e9dfd6;
+      --shadow: 0 18px 50px rgba(61, 49, 91, .11);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 4% 4%, rgba(222, 215, 255, .72), transparent 20rem),
+        radial-gradient(circle at 96% 25%, rgba(255, 216, 196, .66), transparent 20rem),
+        var(--cream);
+      font-family: Inter, ui-rounded, "Avenir Next", "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    .hero {
+      position: relative;
+      min-height: 550px;
+      overflow: hidden;
+      color: #fffaf4;
+      background: linear-gradient(145deg, #3d315b 0%, #60426f 48%, #c67377 100%);
+      isolation: isolate;
+    }
+    .hero::before, .hero::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; filter: blur(1px); }
+    .hero::before { width: 410px; height: 410px; top: -220px; right: -80px; background: rgba(255, 218, 158, .9); }
+    .hero::after { width: 420px; height: 220px; bottom: -105px; left: -80px; background: rgba(255, 164, 128, .55); }
+    .hero-inner { padding: 40px 0 0; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .02em; }
+    .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.5); border-radius: 13px; font-size: 19px; background: rgba(255,255,255,.13); }
+    .hero-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+    .hero-nav a { padding: 7px 10px; border-radius: 99px; color: inherit; text-decoration: none; font-size: .82rem; background: rgba(255,255,255,.08); }
+    .hero-nav a:hover, .hero-nav a:focus-visible { background: rgba(255,255,255,.19); outline: none; }
+    .hero-copy { position: relative; z-index: 1; max-width: 730px; padding: 67px 0 112px; }
+    .eyebrow { margin: 0 0 14px; color: #ffe1c0; font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 640px; margin-bottom: 16px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.2rem, 8vw, 6.3rem); line-height: .93; letter-spacing: -.055em; }
+    .hero-copy > p:not(.eyebrow) { max-width: 580px; margin-bottom: 24px; color: rgba(255,250,244,.88); font-size: clamp(1rem, 2vw, 1.22rem); }
+    .couple-row { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+    .hero-label { display: grid; gap: 5px; color: rgba(255,255,255,.75); font-size: .72rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+    .hero-input { width: 164px; padding: 9px 0; border: 0; border-bottom: 1px solid rgba(255,255,255,.55); color: #fff; outline: 0; background: transparent; font-weight: 700; }
+    .hero-input::placeholder { color: rgba(255,255,255,.55); }
+    .date-label { min-width: 168px; }
+    .date-label input { color-scheme: dark; }
+    .route-art { position: absolute; right: 3%; bottom: 0; width: min(52vw, 590px); height: 240px; opacity: .96; pointer-events: none; }
+    .moon { position: absolute; top: 12px; right: 75px; width: 58px; height: 58px; border-radius: 50%; background: #ffe1b1; box-shadow: 0 0 0 11px rgba(255,225,177,.13); }
+    .star { position: absolute; color: #fff2c6; font-size: 18px; animation: twinkle 4s ease-in-out infinite; }
+    .star.s1 { top: 44px; right: 25px; } .star.s2 { top: 92px; right: 210px; font-size: 12px; animation-delay: 1s; } .star.s3 { top: 20px; right: 295px; font-size: 11px; animation-delay: 2s; }
+    .mountain { position: absolute; bottom: 0; width: 0; height: 0; border-left: 135px solid transparent; border-right: 135px solid transparent; border-bottom: 195px solid #6f4d79; }
+    .mountain.m1 { right: 230px; border-bottom-color: #76527c; } .mountain.m2 { right: 20px; border-left-width: 155px; border-right-width: 155px; border-bottom-width: 210px; border-bottom-color: #4d416b; }
+    .mountain::after { content: ""; position: absolute; left: -35px; bottom: -193px; border-left: 35px solid transparent; border-right: 35px solid transparent; border-bottom: 50px solid rgba(255,235,211,.72); }
+    .road { position: absolute; right: 100px; bottom: -28px; width: 160px; height: 200px; border-radius: 50% 50% 0 0; transform: rotate(11deg); background: #f9bc9b; }
+    .road::after { content: ""; position: absolute; left: 76px; top: 17px; width: 8px; height: 162px; background: repeating-linear-gradient(to bottom, #fff4dd 0 18px, transparent 18px 35px); }
+    .heart { position: absolute; right: 207px; bottom: 110px; color: #ffdfd0; font-size: 28px; transform: rotate(-10deg); }
+    @keyframes twinkle { 50% { opacity: .35; transform: scale(.7); } }
+
+    main { position: relative; z-index: 2; padding: 36px 0 70px; }
+    .jumpbar { display: flex; flex-wrap: wrap; gap: 8px; margin: -72px 0 36px; padding: 14px; border: 1px solid rgba(255,255,255,.66); border-radius: 20px; background: rgba(255,253,249,.84); box-shadow: var(--shadow); backdrop-filter: blur(16px); }
+    .jumpbar a { padding: 8px 12px; border-radius: 99px; color: var(--violet); text-decoration: none; font-size: .84rem; font-weight: 750; }
+    .jumpbar a:hover { background: var(--lavender); }
+    .section { padding: 40px 0; scroll-margin-top: 12px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 22px; }
+    .section-kicker { margin: 0 0 6px; color: var(--coral); font-size: .74rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin-bottom: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 3.8vw, 3.1rem); line-height: 1; letter-spacing: -.04em; }
+    .section-head > p:last-child { max-width: 460px; margin: 0; color: var(--muted); }
+
+    .notice { display: grid; grid-template-columns: auto 1fr; gap: 13px; align-items: start; padding: 18px 20px; border: 1px solid #f1c6bb; border-radius: 18px; background: #fff0ea; color: #6a3f50; }
+    .notice strong { display: block; margin-bottom: 3px; }
+    .notice .icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 12px; background: #ffd1c2; }
+
+    .overview-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; margin-top: 22px; }
+    .card { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,253,249,.92); box-shadow: var(--shadow); }
+    .count-card { position: relative; overflow: hidden; padding: 28px; }
+    .count-card::after { content: "✦"; position: absolute; right: 22px; top: 6px; color: var(--peach); font-size: 92px; line-height: 1; }
+    .count-caption { margin: 0 0 6px; color: var(--muted); font-size: .8rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    #countdown { position: relative; z-index: 1; margin: 0; font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; }
+    #countdown-note { margin: 10px 0 0; color: var(--muted); }
+    .mini-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 24px; }
+    .mini-metrics div { padding: 12px 8px; border-radius: 15px; text-align: center; background: #faf2eb; }
+    .mini-metrics b { display: block; font-size: 1.15rem; }
+    .mini-metrics span { color: var(--muted); font-size: .75rem; }
+    .route-card { padding: 23px; }
+    .route-card h3 { margin-bottom: 8px; font-family: Georgia, serif; font-size: 1.45rem; }
+    .route-card > p { color: var(--muted); }
+    .stop-list { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0 20px; }
+    .stop { padding: 7px 10px; border-radius: 99px; color: #5e4d70; background: #f2edf9; font-size: .8rem; font-weight: 750; }
+    .stop:nth-child(3n+1) { background: #fff0e9; color: #9a5b61; }
+    .stop:nth-child(3n) { background: #e9f6ef; color: #537462; }
+    .soft-button, .primary-button, .outline-button { padding: 10px 14px; border: 0; border-radius: 12px; font-weight: 800; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .soft-button { color: #5a4972; background: var(--lavender); }
+    .primary-button { color: #fff; background: var(--night); box-shadow: 0 8px 20px rgba(61,49,91,.24); }
+    .outline-button { color: var(--violet); border: 1px solid #cabdd6; background: transparent; }
+    .soft-button:hover, .primary-button:hover, .outline-button:hover { transform: translateY(-2px); }
+
+    .day-grid { display: grid; grid-template-columns: repeat(13, minmax(188px, 1fr)); gap: 15px; overflow-x: auto; padding: 4px 3px 14px; scrollbar-color: var(--lavender) transparent; }
+    .day-card { position: relative; display: flex; flex-direction: column; min-height: 325px; padding: 19px; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); box-shadow: 0 12px 28px rgba(61,49,91,.075); transition: transform .2s ease, box-shadow .2s ease; }
+    .day-card:hover { transform: translateY(-4px); box-shadow: 0 18px 35px rgba(61,49,91,.12); }
+    .day-card.is-done { border-color: #a9d5bd; background: #f4fcf6; }
+    .day-number { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--coral); font-size: .77rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .day-card h3 { margin: 12px 0 8px; font-family: Georgia, serif; font-size: 1.36rem; line-height: 1.08; }
+    .drive { display: inline-flex; align-items: center; align-self: flex-start; gap: 5px; padding: 5px 8px; border-radius: 9px; color: #655878; background: #f1edf8; font-size: .73rem; font-weight: 800; }
+    .day-card ul { margin: 15px 0 17px; padding-left: 17px; color: #5f5868; font-size: .88rem; }
+    .day-card li + li { margin-top: 7px; }
+    .day-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px dashed #e5d8d1; font-size: .76rem; }
+    .stay { color: var(--muted); font-weight: 700; }
+    .day-check { display: inline-flex; align-items: center; gap: 5px; color: #588168; font-weight: 850; white-space: nowrap; }
+    .day-check input { accent-color: #5d9c70; }
+    .day-tip { margin-top: 10px; color: #8c5e66; font-size: .75rem; font-weight: 700; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .list-card { padding: 24px; }
+    .list-card h3 { margin-bottom: 7px; font-family: Georgia, serif; font-size: 1.55rem; }
+    .list-card > p { color: var(--muted); font-size: .9rem; }
+    .checklist { display: grid; gap: 7px; margin-top: 18px; }
+    .check-item { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px dashed #e8dfd8; }
+    .check-item:last-child { border-bottom: 0; }
+    .check-item input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--coral); }
+    .check-item label { cursor: pointer; font-size: .92rem; }
+    .check-item.done label { color: var(--muted); text-decoration: line-through; }
+    .priority { padding: 3px 6px; border-radius: 7px; color: #9b5357; background: #ffe7df; font-size: .65rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+    .add-row { display: flex; gap: 8px; margin-top: 16px; }
+    .add-row input { min-width: 0; flex: 1; padding: 10px 12px; border: 1px solid #dacec6; border-radius: 11px; outline-color: var(--violet); background: #fffefa; }
+    .add-row button { padding: 10px 13px; border: 0; border-radius: 11px; color: #fff; background: var(--violet); font-weight: 850; }
+
+    .budget-card { padding: 25px; }
+    .budget-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: start; }
+    .budget-table { width: 100%; border-collapse: collapse; }
+    .budget-table th { padding: 0 0 9px; color: var(--muted); font-size: .72rem; letter-spacing: .1em; text-align: left; text-transform: uppercase; }
+    .budget-table th:last-child, .budget-table td:last-child { text-align: right; }
+    .budget-table td { padding: 8px 0; border-top: 1px dashed #e8dfd8; }
+    .budget-table input { width: 105px; padding: 7px 8px; border: 1px solid #ded1c9; border-radius: 9px; color: var(--ink); text-align: right; outline-color: var(--violet); background: #fffefa; }
+    .budget-hint { color: var(--muted); font-size: .77rem; }
+    .total-box { padding: 24px; border-radius: 20px; color: #fffaf5; background: linear-gradient(145deg, #554369, #8d637e); }
+    .total-box p { margin-bottom: 5px; color: #f5d9ce; font-size: .77rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    #budget-total { margin: 0; font-family: Georgia, serif; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1; }
+    .total-box small { display: block; margin-top: 12px; color: rgba(255,255,255,.76); }
+    .save-dot { display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: #a8e2bd; }
+    .budget-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+
+    .intel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .intel { padding: 21px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,253,249,.82); }
+    .intel-icon { display: grid; place-items: center; width: 39px; height: 39px; margin-bottom: 13px; border-radius: 14px; background: #f2edf9; font-size: 20px; }
+    .intel:nth-child(3n+2) .intel-icon { background: #fff0e9; }
+    .intel:nth-child(3n) .intel-icon { background: #e9f6ef; }
+    .intel h3 { margin-bottom: 7px; font-family: Georgia, serif; font-size: 1.28rem; }
+    .intel p { margin-bottom: 0; color: var(--muted); font-size: .88rem; }
+    .intel a { color: var(--violet); font-weight: 800; }
+
+    .packing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .pack-card { padding: 21px; border-radius: 21px; background: #fffaf3; border: 1px solid var(--line); }
+    .pack-card:nth-child(2) { background: #fcf9ff; } .pack-card:nth-child(3) { background: #f5fcf7; }
+    .pack-card h3 { margin-bottom: 10px; font-family: Georgia, serif; font-size: 1.32rem; }
+    .pack-card .checklist { margin-top: 0; }
+    .pack-card .check-item { grid-template-columns: auto 1fr; padding: 7px 0; }
+
+    .date-night { padding: 32px; color: #fff9f4; background: linear-gradient(135deg, #4a385f, #704963); overflow: hidden; }
+    .date-night h3 { margin-bottom: 8px; font-family: Georgia, serif; font-size: 1.72rem; }
+    .date-night p { max-width: 670px; color: rgba(255,255,255,.76); }
+    .date-night form { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 17px; }
+    .date-night textarea { min-height: 82px; padding: 12px; border: 1px solid rgba(255,255,255,.25); border-radius: 13px; color: var(--ink); resize: vertical; background: #fffdf9; }
+    .date-night button { align-self: end; padding: 11px 14px; border: 0; border-radius: 12px; color: #534166; background: #ffe2ba; font-weight: 900; }
+    .memory-saved { margin: 13px 0 0; color: #ffe2ba; font-size: .87rem; font-weight: 750; }
+    .love-prompt { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.18); }
+    .love-prompt p { margin: 0; color: #fff9f4; font-family: Georgia, serif; font-size: 1.2rem; }
+    .love-prompt button { flex: 0 0 auto; padding: 9px 12px; border: 1px solid rgba(255,255,255,.34); border-radius: 12px; color: #fffaf4; background: rgba(255,255,255,.09); font-weight: 850; }
+
+    .source-card { padding: 24px; }
+    .source-card h3 { margin-bottom: 7px; font-family: Georgia, serif; font-size: 1.45rem; }
+    .source-card > p { color: var(--muted); }
+    .sources { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px 16px; margin-top: 18px; }
+    .source-link { display: flex; gap: 9px; align-items: flex-start; padding: 8px 0; color: var(--violet); font-size: .87rem; font-weight: 800; text-decoration: none; }
+    .source-link:hover { text-decoration: underline; }
+    .source-link span { color: var(--coral); }
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: .85rem; text-align: center; }
+    .reset { color: #9c5c63; text-decoration: underline; text-underline-offset: 3px; background: transparent; border: 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 840px) {
+      .route-art { opacity: .65; right: -120px; }
+      .overview-grid, .two-col, .budget-layout { grid-template-columns: 1fr; }
+      .intel-grid { grid-template-columns: repeat(2, 1fr); }
+      .packing-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head > p:last-child { margin-top: 11px; }
+    }
+    @media (max-width: 590px) {
+      .shell { width: min(100% - 22px, 1180px); }
+      .hero { min-height: 600px; }
+      .hero-inner { padding-top: 22px; }
+      .topbar { align-items: flex-start; }
+      .hero-nav { display: none; }
+      .hero-copy { padding-top: 67px; padding-bottom: 150px; }
+      h1 { font-size: 3.25rem; }
+      .route-art { right: -200px; transform: scale(.82); transform-origin: bottom right; }
+      .jumpbar { margin-top: -55px; padding: 9px; }
+      .jumpbar a { padding: 6px 8px; font-size: .75rem; }
+      .section { padding: 31px 0; }
+      .mini-metrics { grid-template-columns: 1fr 1fr 1fr; }
+      .intel-grid, .sources { grid-template-columns: 1fr; }
+      .date-night form { grid-template-columns: 1fr; }
+      .date-night button { justify-self: start; }
+      .love-prompt { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell hero-inner">
+      <div class="topbar">
+        <div class="brand"><span class="brand-mark" aria-hidden="true">♥</span> Salt &amp; Starlight</div>
+        <nav class="hero-nav" aria-label="Primary navigation">
+          <a href="#itinerary">Itinerary</a><a href="#bookings">Bookings</a><a href="#budget">Budget</a><a href="#intel">Good to know</a><a href="#packing">Packing</a>
+        </nav>
+      </div>
+      <div class="hero-copy">
+          <p class="eyebrow">A thirteen-day Qinghai + Gansu love drive</p>
+        <h1>Every road is better with you.</h1>
+        <p>A cute, calm, all-in-one home base for the full route: Silk Road forts, desert sunsets, emerald salt lakes, Tibetan culture, and a lot of snacks in the passenger seat.</p>
+        <div class="couple-row" aria-label="Personalize your trip">
+          <label class="hero-label">Driver <input id="driver-name" class="hero-input save-field" type="text" placeholder="Your name" maxlength="28"></label>
+          <label class="hero-label">Co-pilot <input id="copilot-name" class="hero-input save-field" type="text" placeholder="Her name" maxlength="28"></label>
+          <label class="hero-label date-label">Trip begins <input id="trip-date" class="hero-input save-field" type="date"></label>
+        </div>
+      </div>
+    </div>
+    <div class="route-art" aria-hidden="true">
+      <span class="moon"></span><span class="star s1">✦</span><span class="star s2">✦</span><span class="star s3">✦</span>
+      <span class="mountain m1"></span><span class="mountain m2"></span><span class="road"></span><span class="heart">♥</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <nav class="jumpbar" aria-label="Quick links">
+      <a href="#itinerary">13-day plan</a><a href="#bookings">Book it</a><a href="#budget">Money tracker</a><a href="#intel">Research notes</a><a href="#packing">Pack cute + smart</a><a href="#memories">Tiny memories</a>
+    </nav>
+
+    <section class="section" aria-labelledby="overview-title">
+      <div class="section-head">
+        <div><p class="section-kicker">The big picture</p><h2 id="overview-title">No stop sacrificed. No heroic driving days.</h2></div>
+        <p>Your rough eight-day circuit stays intact; it simply grows to thirteen days so every original stop gets breathing room.</p>
+      </div>
+      <div class="notice" role="note">
+        <span class="icon" aria-hidden="true">✦</span>
+        <div><strong>Car-return reality check</strong> A Lanzhou-return rental means driving Xining → Lanzhou at the end. The high-speed train works only if you arrange an Xining drop-off or have someone else return the car. This plan keeps the car loop exactly as requested.</div>
+      </div>
+      <div class="overview-grid">
+        <article class="card count-card">
+          <p class="count-caption">Your little countdown</p>
+          <p id="countdown">Pick a date ✦</p>
+          <p id="countdown-note">Set the departure date above and we will do the butterflies for you.</p>
+          <div class="mini-metrics" aria-label="Trip statistics"><div><b>13</b><span>days</span></div><div><b>12</b><span>nights</span></div><div><b>2</b><span>favourite people</span></div></div>
+        </article>
+        <article class="card route-card">
+          <h3>Your full little loop</h3>
+          <p>Comfort-first sequencing, still holding every place in your original wish-list.</p>
+          <div class="stop-list" aria-label="Route stops">
+            <span class="stop">Lanzhou</span><span class="stop">Zhangye</span><span class="stop">Jiayuguan</span><span class="stop">Guazhou</span><span class="stop">Dunhuang</span><span class="stop">Daqaidam</span><span class="stop">Delingha</span><span class="stop">Golmud</span><span class="stop">Qarhan</span><span class="stop">Chaka</span><span class="stop">Qinghai Lake</span><span class="stop">Ta'er</span><span class="stop">Xining</span><span class="stop">Lanzhou</span>
+          </div>
+          <a class="soft-button" href="#itinerary">Open the day-by-day plan ↓</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="itinerary" aria-labelledby="itinerary-title">
+      <div class="section-head">
+        <div><p class="section-kicker">The actual adventure</p><h2 id="itinerary-title">A full-route, unhurried 13-day itinerary.</h2></div>
+        <p>Distances and drive times are planning estimates only—check live navigation, weather and road notices the evening before each drive.</p>
+      </div>
+      <div class="day-grid" aria-label="Thirteen-day itinerary; scroll horizontally for more days">
+        <article class="day-card" data-day="1"><div class="day-number"><span>Day 01</span><span>♥ Arrive soft</span></div><h3>Lanzhou: Yellow River hello</h3><span class="drive">✦ Airport + city day</span><ul><li>Pick up the car, film every panel and wheel before leaving.</li><li>Pre-booked Gansu Provincial Museum; meet the Flying Horse.</li><li>Beef noodles, Zhongshan Bridge, and a no-rush riverside walk.</li></ul><p class="day-tip">Tiny date: choose a snack for each other without telling them first.</p><div class="day-foot"><span class="stay">Sleep: Lanzhou</span><label class="day-check"><input type="checkbox" aria-label="Mark day 1 complete"> Done</label></div></article>
+        <article class="day-card" data-day="2"><div class="day-number"><span>Day 02</span><span>☀ Mountains</span></div><h3>Lanzhou → Zhangye</h3><span class="drive">↗ about 510 km · 6–7 hr</span><ul><li>Leave early; choose the main safe route and save the scenery for proper pull-offs.</li><li>See Qilian Mountain views from legal viewpoints.</li><li>Seven-Coloured Danxia for sunset, then a calm Zhangye dinner.</li></ul><p class="day-tip">Aim to reach the park well before the last entry time—not just sunset.</p><div class="day-foot"><span class="stay">Sleep: Zhangye</span><label class="day-check"><input type="checkbox" aria-label="Mark day 2 complete"> Done</label></div></article>
+        <article class="day-card" data-day="3"><div class="day-number"><span>Day 03</span><span>⌂ Silk Road</span></div><h3>Zhangye → Jiayuguan</h3><span class="drive">↗ about 230 km · 3 hr</span><ul><li>A deliberately short drive after a sunset day.</li><li>Explore Jiayuguan Fortress at an easy pace.</li><li>Golden-hour city stroll and early sleep.</li></ul><p class="day-tip">Take a “same pose, different century” photo at the fort.</p><div class="day-foot"><span class="stay">Sleep: Jiayuguan</span><label class="day-check"><input type="checkbox" aria-label="Mark day 3 complete"> Done</label></div></article>
+        <article class="day-card" data-day="4"><div class="day-number"><span>Day 04</span><span>◌ Desert art</span></div><h3>Jiayuguan → Guazhou → Dunhuang</h3><span class="drive">↗ about 390 km · 5–6 hr</span><ul><li>Leave Jiayuguan after breakfast.</li><li>Stop at Son of the Earth / Daughter of the Earth in Guazhou.</li><li>Continue to Dunhuang, check in, then Sha Zhou Night Market.</li></ul><p class="day-tip">Fuel, water and a bathroom stop before the long open road.</p><div class="day-foot"><span class="stay">Sleep: Dunhuang</span><label class="day-check"><input type="checkbox" aria-label="Mark day 4 complete"> Done</label></div></article>
+        <article class="day-card" data-day="5"><div class="day-number"><span>Day 05</span><span>✧ Timeless</span></div><h3>Mogao Caves + Mingsha Mountain</h3><span class="drive">✦ Local driving only</span><ul><li>Arrive at Mogao’s Digital Exhibition Center 30 minutes before your timed slot.</li><li>Regular ticket first choice; emergency ticket only as your fallback.</li><li>Rest in the afternoon; Mingsha + Crescent Lake for the cooler sunset.</li></ul><p class="day-tip">No photo/video inside Mogao caves—be fully present instead.</p><div class="day-foot"><span class="stay">Sleep: Dunhuang</span><label class="day-check"><input type="checkbox" aria-label="Mark day 5 complete"> Done</label></div></article>
+        <article class="day-card" data-day="6"><div class="day-number"><span>Day 06</span><span>◈ Blue green</span></div><h3>Dunhuang → Daqaidam</h3><span class="drive">↗ about 350 km · 5–6 hr</span><ul><li>One of the remote-looking days: leave rested, refuel early, keep the phone charged.</li><li>Check into Daqaidam first.</li><li>Visit Emerald Lake in low light if timing and entry conditions allow.</li></ul><p class="day-tip">Use marked routes only around salt lakes; salt crust is fragile.</p><div class="day-foot"><span class="stay">Sleep: Daqaidam</span><label class="day-check"><input type="checkbox" aria-label="Mark day 6 complete"> Done</label></div></article>
+        <article class="day-card" data-day="7"><div class="day-number"><span>Day 07</span><span>☁ Buffer day</span></div><h3>Emerald Lake → Delingha</h3><span class="drive">↗ about 210 km · 3–4 hr</span><ul><li>Use the morning for Emerald Lake if yesterday’s weather or timing was imperfect.</li><li>Take the short transfer to Delingha.</li><li>Rest, laundry, snack restock, and prepare for the next long transit.</li></ul><p class="day-tip">This recovery day is what protects the romance from the road.</p><div class="day-foot"><span class="stay">Sleep: Delingha</span><label class="day-check"><input type="checkbox" aria-label="Mark day 7 complete"> Done</label></div></article>
+        <article class="day-card" data-day="8"><div class="day-number"><span>Day 08</span><span>↔ Long but clear</span></div><h3>Delingha → Golmud</h3><span class="drive">↗ about 530 km · 7–8 hr</span><ul><li>Today is a dedicated transit day: leave early and swap drivers only when fully rested.</li><li>Pre-load offline maps, use formal service areas, and keep water + snacks within reach.</li><li>Arrive, eat, sleep—Qarhan gets its own day tomorrow.</li></ul><p class="day-tip">If weather or fatigue changes the day, use another night—never race dusk.</p><div class="day-foot"><span class="stay">Sleep: Golmud</span><label class="day-check"><input type="checkbox" aria-label="Mark day 8 complete"> Done</label></div></article>
+        <article class="day-card" data-day="9"><div class="day-number"><span>Day 09</span><span>❋ Salt world</span></div><h3>Qarhan Salt Lake day trip</h3><span class="drive">↔ about 120–150 km return</span><ul><li>Golmud → Qarhan Salt Lake → Golmud.</li><li>Use the designated visitor entrance and follow the site’s current shuttle/entry rules.</li><li>Take the time for the salt flowers and the Wan Zhang Salt Bridge.</li></ul><p class="day-tip">Do not use industrial or freight-road shortcuts—navigation must be checked live.</p><div class="day-foot"><span class="stay">Sleep: Golmud</span><label class="day-check"><input type="checkbox" aria-label="Mark day 9 complete"> Done</label></div></article>
+        <article class="day-card" data-day="10"><div class="day-number"><span>Day 10</span><span>↔ Long but clear</span></div><h3>Golmud → Chaka</h3><span class="drive">↗ about 470 km · 7–8 hr</span><ul><li>Today is your second committed transit day: swap drivers only when fully rested.</li><li>Pre-load offline maps, use formal service areas, and keep water + snacks within reach.</li><li>Arrive, eat, sleep—save the salt lake for morning.</li></ul><p class="day-tip">If weather, fatigue or a closure changes the day, use a buffer night—never race dusk.</p><div class="day-foot"><span class="stay">Sleep: Chaka</span><label class="day-check"><input type="checkbox" aria-label="Mark day 10 complete"> Done</label></div></article>
+        <article class="day-card" data-day="11"><div class="day-number"><span>Day 11</span><span>⌁ Mirror water</span></div><h3>Chaka Salt Lake → Qinghai Lake</h3><span class="drive">↗ about 170 km · 3–4 hr</span><ul><li>Go early for Chaka’s quieter, cooler light; weather determines reflections.</li><li>Keep to official paths and check the day’s opening notice.</li><li>Drive to a designated Qinghai Lake eco-viewpoint / Heimahe area.</li></ul><p class="day-tip">The lake is more peaceful when you choose a legal eco-viewpoint, not an informal grassland track.</p><div class="day-foot"><span class="stay">Sleep: Qinghai Lake / Heimahe</span><label class="day-check"><input type="checkbox" aria-label="Mark day 11 complete"> Done</label></div></article>
+        <article class="day-card" data-day="12"><div class="day-number"><span>Day 12</span><span>☸ Quiet respect</span></div><h3>Qinghai Lake → Ta'er → Xining</h3><span class="drive">↗ about 300 km · 5–6 hr</span><ul><li>Lake morning, then leave with enough time for Ta'er Monastery.</li><li>Dress modestly and follow no-photo signage in religious areas.</li><li>Get to Xining for dinner; Qinghai Museum only if it still feels lovely.</li></ul><p class="day-tip">A gentle “what surprised you today?” chat makes the best last-night ritual.</p><div class="day-foot"><span class="stay">Sleep: Xining</span><label class="day-check"><input type="checkbox" aria-label="Mark day 12 complete"> Done</label></div></article>
+        <article class="day-card" data-day="13"><div class="day-number"><span>Day 13</span><span>♥ Bring it home</span></div><h3>Xining → Lanzhou</h3><span class="drive">↗ about 220 km · 3–4 hr</span><ul><li>Drive the rental car back to Lanzhou for the agreed return.</li><li>Refuel to the contract level and take final video before handover.</li><li>Eat one last noodle bowl and celebrate your ridiculously good road trip.</li></ul><p class="day-tip">If flying out the same day, leave a big delay cushion or add a Lanzhou night.</p><div class="day-foot"><span class="stay">Finish: Lanzhou</span><label class="day-check"><input type="checkbox" aria-label="Mark day 13 complete"> Done</label></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="bookings" aria-labelledby="bookings-title">
+      <div class="section-head"><div><p class="section-kicker">Before the wheels turn</p><h2 id="bookings-title">The booking command center.</h2></div><p>Tick things off together. Everything on this page saves in this browser, automatically.</p></div>
+      <div class="two-col">
+        <article class="card list-card"><h3>Book before the trip</h3><p>These are the things most likely to create a bad surprise if left late.</p><div id="booking-list" class="checklist" aria-label="Bookings checklist"></div><div class="add-row"><label class="sr-only" for="booking-add">Add a booking task</label><input id="booking-add" type="text" maxlength="100" placeholder="Add a booking or task"><button id="booking-add-button" type="button">+ Add</button></div></article>
+        <article class="card list-card"><h3>Car + road handover</h3><p>Two minutes of admin protects the whole trip.</p><div id="road-list" class="checklist" aria-label="Road and rental checklist"></div><div class="add-row"><label class="sr-only" for="road-add">Add a road task</label><input id="road-add" type="text" maxlength="100" placeholder="Add a road task"><button id="road-add-button" type="button">+ Add</button></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="budget" aria-labelledby="budget-title">
+      <div class="section-head"><div><p class="section-kicker">The no-awkward-money zone</p><h2 id="budget-title">Our flexible CNY budget.</h2></div><p>Start with editable placeholders, then replace them with booked prices. It is a tracker, not a promise of current rates.</p></div>
+      <article class="card budget-card"><div class="budget-layout"><div><table class="budget-table"><thead><tr><th scope="col">For the two of you</th><th scope="col">CNY</th></tr></thead><tbody>
+        <tr><td>Rental car + basic insurance <span class="budget-hint">(13 days)</span></td><td><input class="budget-input" data-key="rental" type="number" min="0" value="0" aria-label="Rental car and insurance CNY"></td></tr>
+        <tr><td>Fuel <span class="budget-hint">(about 3,500 km, confirm)</span></td><td><input class="budget-input" data-key="fuel" type="number" min="0" value="0" aria-label="Fuel CNY"></td></tr>
+        <tr><td>Tolls + parking</td><td><input class="budget-input" data-key="tolls" type="number" min="0" value="0" aria-label="Tolls and parking CNY"></td></tr>
+        <tr><td>Attractions + shuttles</td><td><input class="budget-input" data-key="tickets" type="number" min="0" value="0" aria-label="Attractions and shuttles CNY"></td></tr>
+        <tr><td>Hotels <span class="budget-hint">(12 nights)</span></td><td><input class="budget-input" data-key="hotels" type="number" min="0" value="0" aria-label="Hotels CNY"></td></tr>
+        <tr><td>Food, coffee + treats</td><td><input class="budget-input" data-key="food" type="number" min="0" value="0" aria-label="Food CNY"></td></tr>
+        <tr><td>Emergency / sweet extras</td><td><input class="budget-input" data-key="extras" type="number" min="0" value="0" aria-label="Emergency and extra CNY"></td></tr>
+      </tbody></table></div><aside class="total-box"><p>Current trip pot</p><output id="budget-total" aria-live="polite">¥0</output><small><span class="save-dot"></span>Saved in this browser. Add your actual booked amounts whenever you have them.</small><div class="budget-actions"><button id="split-total" class="soft-button" type="button">Show half each</button><button id="clear-budget" class="outline-button" type="button">Clear numbers</button></div><small id="split-note" aria-live="polite"></small></aside></div></article>
+    </section>
+
+    <section class="section" id="intel" aria-labelledby="intel-title">
+      <div class="section-head"><div><p class="section-kicker">Research, translated into useful</p><h2 id="intel-title">Trip intelligence for every big stop.</h2></div><p>These are the details worth knowing, not a list of random tourist facts. Ticket policies, access and conditions can change—open the sources before booking.</p></div>
+      <div class="intel-grid">
+        <article class="intel"><div class="intel-icon">🏛</div><h3>Lanzhou museums</h3><p>Gansu Provincial Museum is free but uses real-name reservations. Its official guidance lists Tuesday–Sunday opening, so make it a Day 1 priority rather than a “maybe later.”</p></article>
+        <article class="intel"><div class="intel-icon">🌈</div><h3>Seven-Coloured Danxia</h3><p>Sunset is a great choice, but leave a proper entry buffer. The official geopark has real-name entry and a daily capacity cap; ticket pricing changed in 2026, so do not rely on the old ¥95 figure.</p></article>
+        <article class="intel"><div class="intel-icon">🏰</div><h3>Jiayuguan + Guazhou</h3><p>Splitting these across a full day protects the experience: fortress history first, open-road sculpture second. Carry water, fuel early, and treat the drive as a journey instead of a race.</p></article>
+        <article class="intel"><div class="intel-icon">🕯</div><h3>Mogao Caves</h3><p>Book direct, choose the regular ticket first, and arrive 30 minutes early at the Digital Exhibition Center. Cave photography/video is prohibited; emergency entry is a fallback with fewer caves, not the “cheap version.”</p></article>
+        <article class="intel"><div class="intel-icon">🐪</div><h3>Mingsha + Crescent Lake</h3><p>Go near sunset for cooler sand and kinder light. Official online reservation is used in the season; decide together whether camel riding is a special splurge, not an automatic add-on.</p></article>
+        <article class="intel"><div class="intel-icon">🧂</div><h3>Emerald + Qarhan lakes</h3><p>Salt-lake access, shuttles and photo zones change. Stay on marked visitor routes, do not drive onto unapproved crust/industrial roads, and keep the dedicated Qarhan day in Golmud.</p></article>
+        <article class="intel"><div class="intel-icon">☁</div><h3>Chaka Salt Lake</h3><p>Reflections depend on wind and weather—not a filter. Its official site posts seasonal live notices, real-name entry and weather closures. Morning is calmer; check the last-entry time that week.</p></article>
+        <article class="intel"><div class="intel-icon">🦢</div><h3>Qinghai Lake</h3><p>Use a designated eco-viewpoint or licensed visitor facility. The lake is a protected landscape with free eco-viewpoints being developed; informal “herders’ paths” can be illegal, unsafe, or harmful to grassland.</p></article>
+        <article class="intel"><div class="intel-icon">☸</div><h3>Ta'er + Xining</h3><p>At Ta'er, let signage and staff lead: conservative dress, quiet voices, and no photography where restricted. Qinghai Museum is a lovely final stop if you reserve it and have energy left.</p></article>
+        <article class="intel"><div class="intel-icon">⛰</div><h3>Altitude is real</h3><p>Hydrate, layer up, eat gently and keep the first high-altitude nights calm. If either of you gets a severe headache, confusion, breathlessness at rest, or worsening symptoms, descend and get medical help.</p></article>
+        <article class="intel"><div class="intel-icon">🪪</div><h3>Driving eligibility</h3><p>If either driver uses a foreign licence: mainland China does not accept an IDP alone. Confirm a temporary Chinese permit and your rental company’s requirements before paying for the car.</p></article>
+        <article class="intel"><div class="intel-icon">🌦</div><h3>Weather + navigation</h3><p>Mountain weather, wind and closures beat a static itinerary. Download offline maps, share the day’s route with each other, and decide the evening before whether conditions support the plan.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="packing" aria-labelledby="packing-title">
+      <div class="section-head"><div><p class="section-kicker">Tiny things, huge difference</p><h2 id="packing-title">Pack cute. Pack clever.</h2></div><p>Check off what is in the bag; add anything only the two of you would remember.</p></div>
+      <div class="packing-grid">
+        <article class="pack-card"><h3>Sun + salt + wind</h3><div id="sun-pack" class="checklist" aria-label="Sun and salt packing checklist"></div><div class="add-row"><label class="sr-only" for="sun-add">Add sun item</label><input id="sun-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="sun-pack">+ Add</button></div></article>
+        <article class="pack-card"><h3>Car cozy kit</h3><div id="car-pack" class="checklist" aria-label="Car packing checklist"></div><div class="add-row"><label class="sr-only" for="car-add">Add car item</label><input id="car-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="car-pack">+ Add</button></div></article>
+        <article class="pack-card"><h3>Dates + moments</h3><div id="love-pack" class="checklist" aria-label="Couple packing checklist"></div><div class="add-row"><label class="sr-only" for="love-add">Add couple item</label><input id="love-add" type="text" maxlength="80" placeholder="Add an item"><button type="button" data-add-list="love-pack">+ Add</button></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="memories" aria-labelledby="memories-title">
+      <article class="card date-night"><p class="section-kicker" style="color:#ffd5ba">For the two of you</p><h3 id="memories-title">Leave a tiny breadcrumb for future-you.</h3><p>One sentence each night will make this trip feel even better when you read it back at home.</p><form id="memory-form"><label class="sr-only" for="memory">Today’s tiny memory</label><textarea id="memory" maxlength="480" placeholder="Today, I loved when you…"></textarea><button type="submit">Save our memory ♥</button></form><p id="memory-saved" class="memory-saved" aria-live="polite"></p><div class="love-prompt"><p id="love-prompt-text">Tonight’s question: What was your favourite tiny moment today?</p><button id="new-prompt" type="button">Give us another ✦</button></div></article>
+    </section>
+
+    <section class="section" aria-labelledby="sources-title">
+      <article class="card source-card"><h3 id="sources-title">Official links to check right before you go</h3><p>Research checked on 30 July 2026. Prices, seasons, bookings, access rules and road conditions can change—please open these official sources when you make the actual reservation.</p><div class="sources">
+        <a class="source-link" href="https://www.mgk.org.cn/" target="_blank" rel="noopener"><span>↗</span>Mogao Caves official booking</a>
+        <a class="source-link" href="https://www.dunhuangcaves.org/info/1020/7498.htm" target="_blank" rel="noopener"><span>↗</span>Mogao’s 2026 visitor rules</a>
+        <a class="source-link" href="https://www.gswbj.gov.cn/a/2026/04/16/28007.html" target="_blank" rel="noopener"><span>↗</span>Mingsha Mountain 2026 notice</a>
+        <a class="source-link" href="https://zhangyegeopark.cn/h-nd-172.html" target="_blank" rel="noopener"><span>↗</span>Zhangye Geopark entry information</a>
+        <a class="source-link" href="https://www.zhangye.gov.cn/fgw/dzdt/tzgg/202507/t20250711_1426087.html" target="_blank" rel="noopener"><span>↗</span>Zhangye 2026 ticket-price notice</a>
+        <a class="source-link" href="https://www.chakasl.com/index.html" target="_blank" rel="noopener"><span>↗</span>Chaka Salt Lake official site</a>
+        <a class="source-link" href="https://www.geermu.gov.cn/details?id=ff80808197a6679c0197e4318b1202f7" target="_blank" rel="noopener"><span>↗</span>Golmud government: Qarhan visitor update</a>
+        <a class="source-link" href="https://www.forestry.gov.cn/lyj/1/dfdt/20260608/674404.html" target="_blank" rel="noopener"><span>↗</span>Qinghai Lake ecological viewpoints</a>
+        <a class="source-link" href="https://gansumuseum.com/" target="_blank" rel="noopener"><span>↗</span>Gansu Provincial Museum</a>
+        <a class="source-link" href="https://qhsbwg.hdwbcloud.com/gticketw" target="_blank" rel="noopener"><span>↗</span>Qinghai Museum reservations</a>
+        <a class="source-link" href="https://en.nia.gov.cn/n147428/n147498/n147770/n147875/c158921/content.html" target="_blank" rel="noopener"><span>↗</span>China temporary driving permits</a>
+        <a class="source-link" href="https://www.smartraveller.gov.au/destinations/asia/china" target="_blank" rel="noopener"><span>↗</span>Driving in China guidance</a>
+      </div></article>
+    </section>
+  </main>
+  <footer class="shell">Made for the passenger-seat DJ and the driver who always says “we’re basically there.” <button id="reset-site" class="reset" type="button">Reset this planner</button></footer>
+
+  <script>
+    (() => {
+      const STORE = 'salt-and-starlight-v1';
+      const state = JSON.parse(localStorage.getItem(STORE) || '{}');
+      const save = () => localStorage.setItem(STORE, JSON.stringify(state));
+      const safe = (value) => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+
+      document.querySelectorAll('.save-field').forEach(field => {
+        field.value = state[field.id] || '';
+        field.addEventListener('input', () => { state[field.id] = field.value; save(); if (field.id === 'trip-date') updateCountdown(); });
+        field.addEventListener('change', () => { state[field.id] = field.value; save(); if (field.id === 'trip-date') updateCountdown(); });
+      });
+
+      function updateCountdown() {
+        const target = document.getElementById('trip-date').value;
+        const title = document.getElementById('countdown');
+        const note = document.getElementById('countdown-note');
+        if (!target) { title.textContent = 'Pick a date ✦'; note.textContent = 'Set the departure date above and we will do the butterflies for you.'; return; }
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        const trip = new Date(target + 'T00:00:00');
+        const days = Math.round((trip - today) / 86400000);
+        if (days > 1) { title.textContent = days + ' days to go'; note.textContent = 'Your playlist, snacks and stargazing are getting closer.'; }
+        else if (days === 1) { title.textContent = 'Tomorrow!'; note.textContent = 'Charge the camera. Pack the snacks. Try to sleep.'; }
+        else if (days === 0) { title.textContent = 'It is road-trip day!'; note.textContent = 'Go make the good kind of trouble.'; }
+        else { title.textContent = 'The trip has begun ✦'; note.textContent = 'Keep the memories coming.'; }
+      }
+      updateCountdown();
+
+      const defaults = {
+        'booking-list': [
+          ['Reserve Mogao Caves — regular ticket first, emergency as backup', 'priority'],
+          ['Book all 11 hotel nights with free cancellation where possible', 'priority'],
+          ['Confirm the rental car is a Lanzhou return, unlimited km, and insured', 'priority'],
+          ['Reserve/confirm Mingsha Mountain, Chaka and museum entry slots', 'priority'],
+          ['Save every confirmation, hotel address and emergency contact offline', ''],
+          ['Choose the passenger-seat playlist', '']
+        ],
+        'road-list': [
+          ['Confirm both drivers are legally eligible to drive this rental car', 'priority'],
+          ['Photograph/video the car: roof, wheels, glass, fuel, dashboard, every scratch', 'priority'],
+          ['Download offline maps and the day-by-day route before leaving Wi-Fi', 'priority'],
+          ['Buy water, snacks, sunscreen and a small first-aid kit in the city', ''],
+          ['Agree: no fatigue driving, no industrial-road shortcuts, no night racing', ''],
+          ['Set a daily “we stop driving by” time together', '']
+        ],
+        'sun-pack': [['SPF 50+ sunscreen + lip balm', ''], ['UV sunglasses + wide-brim hat', ''], ['Light scarf / wind layer', ''], ['Waterproof shoe covers or spare shoes', ''], ['Reusable water bottles', ''], ['Moisturiser + saline spray', '']],
+        'car-pack': [['Offline maps + power banks', ''], ['Car charger + cable each', ''], ['Paper copy of hotel addresses', ''], ['Snacks with actual protein', ''], ['First-aid kit + any prescriptions', ''], ['Tissues + wet wipes + zip bags', '']],
+        'love-pack': [['Camera / disposable camera', ''], ['A tiny surprise for each other', ''], ['One nice dinner outfit', ''], ['Playlist downloaded offline', ''], ['Journal or this page on your phone', ''], ['Room for a silly souvenir', '']]
+      };
+
+      function getList(id) { return Array.isArray(state[id]) ? state[id] : defaults[id].map(([text, tag]) => ({text, tag, done: false})); }
+      function renderList(id) {
+        const container = document.getElementById(id); if (!container) return;
+        const list = getList(id); state[id] = list;
+        container.innerHTML = list.map((item, index) => '<div class="check-item ' + (item.done ? 'done' : '') + '"><input type="checkbox" id="' + id + '-' + index + '" data-list="' + id + '" data-index="' + index + '" ' + (item.done ? 'checked' : '') + '><label for="' + id + '-' + index + '">' + safe(item.text) + '</label>' + (item.tag ? '<span class="priority">' + safe(item.tag) + '</span>' : '') + '</div>').join('');
+        container.querySelectorAll('input').forEach(box => box.addEventListener('change', () => { const list = getList(box.dataset.list); list[Number(box.dataset.index)].done = box.checked; state[box.dataset.list] = list; save(); renderList(box.dataset.list); }));
+      }
+      Object.keys(defaults).forEach(renderList);
+
+      function addItem(listId, inputId) {
+        const input = document.getElementById(inputId); const text = input.value.trim();
+        if (!text) { input.focus(); return; }
+        const list = getList(listId); list.push({text, tag: '', done: false}); state[listId] = list; save(); input.value = ''; renderList(listId);
+      }
+      document.getElementById('booking-add-button').addEventListener('click', () => addItem('booking-list', 'booking-add'));
+      document.getElementById('road-add-button').addEventListener('click', () => addItem('road-list', 'road-add'));
+      document.getElementById('booking-add').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addItem('booking-list', 'booking-add'); } });
+      document.getElementById('road-add').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addItem('road-list', 'road-add'); } });
+      document.querySelectorAll('[data-add-list]').forEach(button => button.addEventListener('click', () => { const listId = button.dataset.addList; const inputId = listId === 'sun-pack' ? 'sun-add' : listId === 'car-pack' ? 'car-add' : 'love-add'; addItem(listId, inputId); }));
+
+      document.querySelectorAll('.day-card').forEach(card => {
+        const box = card.querySelector('input[type="checkbox"]'); const key = 'day-' + card.dataset.day;
+        box.checked = Boolean(state[key]); card.classList.toggle('is-done', box.checked);
+        box.addEventListener('change', () => { state[key] = box.checked; card.classList.toggle('is-done', box.checked); save(); });
+      });
+
+      const budgetInputs = document.querySelectorAll('.budget-input');
+      budgetInputs.forEach(input => { input.value = state['budget-' + input.dataset.key] ?? input.value; input.addEventListener('input', () => { state['budget-' + input.dataset.key] = input.value; save(); updateBudget(); }); });
+      function updateBudget() { const total = Array.from(budgetInputs).reduce((sum, input) => sum + (Number(input.value) || 0), 0); document.getElementById('budget-total').textContent = '¥' + total.toLocaleString('en-US'); return total; }
+      updateBudget();
+      document.getElementById('split-total').addEventListener('click', () => { const half = updateBudget() / 2; document.getElementById('split-note').textContent = 'Half each: ¥' + half.toLocaleString('en-US', {maximumFractionDigits: 0}) + ' (before any personal splurges).'; });
+      document.getElementById('clear-budget').addEventListener('click', () => { budgetInputs.forEach(input => { input.value = '0'; state['budget-' + input.dataset.key] = '0'; }); save(); updateBudget(); document.getElementById('split-note').textContent = ''; });
+
+      const memory = document.getElementById('memory'); memory.value = state.memory || '';
+      document.getElementById('memory-form').addEventListener('submit', event => { event.preventDefault(); state.memory = memory.value; save(); document.getElementById('memory-saved').textContent = memory.value.trim() ? 'Saved. Future-you is going to love this.' : 'A blank little page is saved too—write whenever it feels right.'; });
+      const prompts = [
+        'Tonight’s question: What was your favourite tiny moment today?',
+        'Tonight’s question: What did I do today that made you feel cared for?',
+        'Tonight’s question: Which view would you put in a snow globe?',
+        'Tonight’s question: What snack deserves to come home with us?',
+        'Tonight’s question: What is one thing we would do differently next time?',
+        'Tonight’s question: What made us laugh hardest today?'
+      ];
+      let promptIndex = 0;
+      document.getElementById('new-prompt').addEventListener('click', () => { promptIndex = (promptIndex + 1 + Math.floor(Math.random() * (prompts.length - 1))) % prompts.length; document.getElementById('love-prompt-text').textContent = prompts[promptIndex]; });
+      document.getElementById('reset-site').addEventListener('click', () => { if (confirm('Reset all saved names, checklists, budget and memories on this browser?')) { localStorage.removeItem(STORE); location.reload(); } });
+    })();
+  </script>
+</body>
+</html>
