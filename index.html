@@ -225,6 +225,20 @@
     .love-prompt { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.18); }
     .love-prompt p { margin: 0; color: #fff9f4; font-family: Georgia, serif; font-size: 1.2rem; }
     .love-prompt button { flex: 0 0 auto; padding: 9px 12px; border: 1px solid rgba(255,255,255,.34); border-radius: 12px; color: #fffaf4; background: rgba(255,255,255,.09); font-weight: 850; }
+    .photo-wall { padding: 25px; }
+    .photo-upload { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
+    .photo-choose { display: inline-flex; align-items: center; cursor: pointer; }
+    .photo-upload .primary-button:disabled { cursor: not-allowed; opacity: .52; transform: none; }
+    .photo-hint, .photo-status { margin: 12px 0 0; color: var(--muted); font-size: .86rem; }
+    .photo-status { min-height: 1.25em; color: #5b7865; font-weight: 750; }
+    .photo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; margin-top: 20px; }
+    .photo-item { position: relative; overflow: hidden; margin: 0; border: 1px solid var(--line); border-radius: 17px; background: #faf2eb; }
+    .photo-item img { display: block; width: 100%; aspect-ratio: 1 / .82; object-fit: cover; background: var(--lavender); }
+    .photo-item figcaption { display: flex; align-items: center; justify-content: space-between; gap: 7px; padding: 8px 9px; }
+    .photo-name { min-width: 0; overflow: hidden; color: var(--muted); font-size: .72rem; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+    .photo-delete { display: grid; flex: 0 0 auto; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 8px; color: #a1555e; font-size: 1.1rem; line-height: 1; background: #ffe5de; }
+    .photo-delete:hover, .photo-delete:focus-visible { color: #fff; outline: none; background: #c26769; }
+    .photo-empty { grid-column: 1 / -1; margin: 0; padding: 23px; border: 1px dashed #d9cdd0; border-radius: 16px; color: var(--muted); text-align: center; background: rgba(255,255,255,.33); }
     .share-import { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 0 0 25px; padding: 17px 19px; border: 1px solid #b9dccc; border-radius: 18px; background: #eff9f2; box-shadow: 0 10px 25px rgba(61,49,91,.07); }
     .share-import strong { display: block; margin-bottom: 3px; }
     .share-import p { margin: 0; color: #5b7364; font-size: .86rem; }
@@ -292,6 +306,10 @@
     html[data-theme="dark"] .pack-card:nth-child(2) { background: #2d263d; }
     html[data-theme="dark"] .pack-card:nth-child(3) { background: #263a31; }
     html[data-theme="dark"] .date-night textarea { color: #f6eff9; border-color: #715c7f; background: #251c30; }
+    html[data-theme="dark"] .photo-item { background: #352a41; }
+    html[data-theme="dark"] .photo-empty { border-color: #64536f; background: #30253b; }
+    html[data-theme="dark"] .photo-status { color: #bad8c3; }
+    html[data-theme="dark"] .photo-delete { color: #ffc2be; background: #593943; }
     html[data-theme="dark"] .share-import { border-color: #49735b; background: #293f34; }
     html[data-theme="dark"] .share-import p, html[data-theme="dark"] .share-status { color: #bad8c3; }
     html[data-theme="dark"] .guide-close { border-color: #675774; color: #e5d4f0; background: #31263d; }
@@ -306,6 +324,7 @@
       .overview-grid, .two-col, .budget-layout { grid-template-columns: 1fr; }
       .intel-grid { grid-template-columns: repeat(2, 1fr); }
       .packing-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .section-head { display: block; }
       .section-head > p:last-child { margin-top: 11px; }
     }
@@ -324,6 +343,7 @@
       .section { padding: 31px 0; }
       .mini-metrics { grid-template-columns: 1fr 1fr 1fr; }
       .intel-grid, .sources { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .date-night form { grid-template-columns: 1fr; }
       .date-night button { justify-self: start; }
       .love-prompt { align-items: flex-start; flex-direction: column; }
@@ -367,7 +387,7 @@
 
   <main class="shell">
     <nav class="jumpbar" aria-label="Quick links">
-      <a href="#itinerary" data-i18n="jump_itinerary">13-day plan</a><a href="#bookings" data-i18n="jump_bookings">Book it</a><a href="#budget" data-i18n="jump_budget">Money tracker</a><a href="#intel" data-i18n="jump_intel">Research notes</a><a href="#packing" data-i18n="jump_packing">Pack cute + smart</a><a href="#share" data-i18n="jump_share">Share it</a><a href="#memories" data-i18n="jump_memories">Tiny memories</a>
+      <a href="#itinerary" data-i18n="jump_itinerary">13-day plan</a><a href="#bookings" data-i18n="jump_bookings">Book it</a><a href="#budget" data-i18n="jump_budget">Money tracker</a><a href="#intel" data-i18n="jump_intel">Research notes</a><a href="#packing" data-i18n="jump_packing">Pack cute + smart</a><a href="#photos" data-i18n="jump_photos">Photo wall</a><a href="#share" data-i18n="jump_share">Share it</a><a href="#memories" data-i18n="jump_memories">Tiny memories</a>
     </nav>
 
     <aside id="share-import-banner" class="share-import" hidden aria-live="polite">
@@ -474,6 +494,11 @@
 
     <section class="section" id="memories" aria-labelledby="memories-title">
       <article class="card date-night"><p class="section-kicker" style="color:#ffd5ba" data-i18n="memories_kicker">For the two of you</p><h3 id="memories-title" data-i18n="memories_title">Leave a tiny breadcrumb for future-you.</h3><p data-i18n="memories_description">One sentence each night will make this trip feel even better when you read it back at home.</p><form id="memory-form"><label class="sr-only" for="memory" data-i18n="memory_label">Today’s tiny memory</label><textarea id="memory" maxlength="480" placeholder="Today, I loved when you…"></textarea><button type="submit" data-i18n="save_memory">Save our memory ♥</button></form><p id="memory-saved" class="memory-saved" aria-live="polite"></p><div class="love-prompt"><p id="love-prompt-text">Tonight’s question: What was your favourite tiny moment today?</p><button id="new-prompt" type="button" data-i18n="new_prompt">Give us another ✦</button></div></article>
+    </section>
+
+    <section class="section" id="photos" aria-labelledby="photos-title">
+      <div class="section-head"><div><p class="section-kicker" data-i18n="photos_kicker">Little proofs of a big adventure</p><h2 id="photos-title" data-i18n="photos_title">Our tiny road-trip photo wall.</h2></div><p data-i18n="photos_description">Add your favourite snapshots, then keep the wall as delightfully messy as the trip itself.</p></div>
+      <article class="card photo-wall"><div class="photo-upload"><label for="photo-input" class="soft-button photo-choose" data-i18n="choose_photos">Choose photos</label><input id="photo-input" class="sr-only" type="file" accept="image/*" multiple><button id="photo-upload-button" class="primary-button" type="button" disabled data-i18n="add_photos">Add to our wall</button></div><p class="photo-hint" data-i18n="photo_hint">Photos stay on this device, so add your favourites here and share them separately if you want both phones to have them.</p><p id="photo-status" class="photo-status" aria-live="polite"></p><div id="photo-grid" class="photo-grid" aria-live="polite"></div></article>
     </section>
 
     <section class="section" id="share" aria-labelledby="share-title">
@@ -745,7 +770,7 @@
       const zh = {
         nav_itinerary: '行程', nav_bookings: '预订', nav_budget: '预算', nav_intel: '实用信息', nav_packing: '打包',
         hero_eyebrow: '13 天青海 + 甘肃情侣自驾', hero_title: '有你在，每一段路都更好。', hero_description: '一份可爱、从容、把一切都放在一起的旅行基地：丝路雄关、沙漠落日、翡翠般的盐湖、藏地文化，以及副驾上的一大堆零食。', driver: '司机', copilot: '副驾', trip_begins: '出发日期',
-        jump_itinerary: '13 天行程', jump_bookings: '去预订', jump_budget: '旅行账本', jump_intel: '攻略笔记', jump_packing: '可爱又聪明地打包', jump_share: '分享计划', jump_memories: '小小回忆',
+        jump_itinerary: '13 天行程', jump_bookings: '去预订', jump_budget: '旅行账本', jump_intel: '攻略笔记', jump_packing: '可爱又聪明地打包', jump_photos: '照片墙', jump_share: '分享计划', jump_memories: '小小回忆',
         import_title: '有一份共享旅行计划等你打开 ✦', import_description: '导入会覆盖当前浏览器中已保存的计划。', import_button: '导入共享计划', not_now: '稍后再说',
         overview_kicker: '全景概览', overview_title: '一个站都不少，也不必硬撑着赶路。', overview_description: '你原本的 8 天环线完全保留；只是延长为 13 天，让每个原定停靠点都有足够余裕。', car_return_title: '还车方式提醒', car_return_description: '兰州还车意味着最后一天要从西宁开回兰州。只有改成西宁还车，或由其他人开车返回，你们才适合乘高铁。本计划严格保留你们指定的兰州取还车环线。',
         count_caption: '你们的小小倒计时', metric_days: '天', metric_nights: '晚', metric_people: '旅行者', route_title: '你们的小小完整环线', route_description: '以舒适为先的顺序，仍保留原始愿望清单里的每一个地方。', route_button: '打开逐日行程 ↓',
@@ -755,11 +780,12 @@
         intel_kicker: '把调研变成真正有用的信息', intel_title: '每个重点停靠点的实用攻略。', intel_description: '这些是值得提前知道的细节，不是随机旅游冷知识。票务、通行和现场条件可能变化——预订前请打开官方来源确认。',
         packing_kicker: '小东西，大不同', packing_title: '可爱地打包，也聪明地打包。', packing_description: '勾选已经装进包里的东西；再加上只有你们俩才会记得带的那些。', sun_pack_title: '防晒 + 盐湖 + 风', car_pack_title: '车上舒适包', love_pack_title: '约会 + 回忆', add_sun_label: '添加防晒物品', add_car_label: '添加车载物品', add_love_label: '添加情侣物品',
         memories_kicker: '给你们两个人', memories_title: '给未来的自己留下一点点面包屑。', memories_description: '每天写下一句话，回到家再读时，这趟旅行会更美好。', memory_label: '今天的小回忆', save_memory: '保存我们的回忆 ♥', new_prompt: '再给我们一个 ✦',
+        photos_kicker: '这趟冒险的小小证据', photos_title: '我们的公路旅行照片墙。', photos_description: '把最喜欢的瞬间贴上来，让它和旅程一样有一点可爱的凌乱。', choose_photos: '选择照片', add_photos: '添加到照片墙', photo_hint: '照片只保存在这台设备上；如果希望两部手机都有，请另行分享这些照片。', photo_empty: '还没有照片——先挑几张最喜欢的加入吧。', photos_on_device: '这台设备上已保存 {count} 张照片。', photos_selected: '已选择 {count} 张照片，准备加入照片墙。', photos_uploading: '正在把照片贴到墙上…', photos_saved: '已添加 {count} 张照片。', photo_error: '无法保存这些照片。请再试一次，或换少一点照片。', delete_photo: '删除照片',
         share_kicker: '给你的副驾', share_title: '把你们真正填好的计划发过去。', share_description: '添加姓名、清单勾选、预算、自定义项目和小回忆后，创建一条私密快照链接。对方打开链接后，点一下“导入共享计划”。', make_share: '创建分享链接 ♥', share_label: '你的可分享旅行链接', copy_link: '复制链接', share_note: '这是一次快照，不是实时同步：有新改动后请重新创建并发送链接。任何拿到链接的人都能查看共享计划，所以只发给你的伴侣。',
         sources_title: '出发前要再确认的官方链接', sources_description: '调研更新至 2026 年 7 月 30 日。价格、季节、预约、通行规则和道路状况可能改变——实际预约时请打开这些官方来源再确认。', open_day_guide: '打开当天详细指南 ↗', done: '完成', day_done: '标记第 {n} 天已完成', stay_prefix: '住宿：', finish_prefix: '结束：', priority: '重要',
         pick_date: '选一个日期 ✦', pick_date_note: '在上方设定出发日期，心动倒计时交给我们。', days_to_go: '还有 {days} 天出发', days_to_go_note: '歌单、零食和星空都越来越近了。', tomorrow: '明天出发！', tomorrow_note: '相机充电，零食装包，尽量早点睡。', today: '今天就是公路旅行日！', today_note: '去制造一点美好的小麻烦吧。', started: '旅程已经开始了 ✦', started_note: '继续收集回忆吧。',
         saved_memory: '已保存。未来的你们一定会很喜欢看到它。', blank_memory: '空白的小页面也保存好了——想写的时候再写就好。', share_copied: '已复制！把链接发给你的副驾吧 ♥', share_copy_manual: '链接已选中——请手动复制后发送给你的副驾。', share_too_large: '这份快照内容太多，无法生成可靠链接。删掉几条过长的自定义备注后再试。', share_ready: '快照已准备好。复制链接后发给你的副驾吧。', split_each: '{count} 人均摊：¥{amount}（不含各自想买的小惊喜）',
-        page_title: '盐与星光 — 我们的青甘公路旅行', brand: '盐与星光', footer: '献给负责副驾放歌的人，以及总说“我们快到了”的司机。', reset: '重置这个旅行计划', reset_confirm: '要重置此浏览器中保存的所有姓名、清单、预算和回忆吗？', import_confirm: '要导入这份共享计划，并替换当前浏览器已保存的计划吗？'
+        page_title: '盐与星光 — 我们的青甘公路旅行', brand: '盐与星光', footer: '献给负责副驾放歌的人，以及总说“我们快到了”的司机。', reset: '重置这个旅行计划', reset_confirm: '要重置此浏览器中保存的所有姓名、清单、预算、回忆和照片吗？', import_confirm: '要导入这份共享计划，并替换当前浏览器已保存的计划吗？'
       };
       const dayCardsZh = {
         1: { badge: '♥ 温柔抵达', title: '兰州：向黄河问好', drive: '✦ 机场 + 市区轻松日', bullets: ['取车后，先拍视频记录车身每一面和每个轮胎。', '按预约时间去甘肃省博物馆，看看铜奔马。', '牛肉面、中山桥、黄河边慢慢散步。'], tip: '小约会：偷偷替对方挑一份零食，先别告诉 TA。', stay: '兰州' },
@@ -924,6 +950,7 @@
         if (typeof updateCountdown === 'function') updateCountdown();
         if (typeof updateTravellerVisual === 'function') updateTravellerVisual();
         const promptText = document.getElementById('love-prompt-text'); if (promptText && typeof promptIndex !== 'undefined') promptText.textContent = prompts[activeLanguage][promptIndex];
+        if (typeof renderPhotos === 'function') renderPhotos();
       }
 
       function encodeSharedPlan(payload) {
@@ -1083,6 +1110,116 @@
       document.getElementById('memory-form').addEventListener('submit', event => { event.preventDefault(); state.memory = memory.value; save(); document.getElementById('memory-saved').textContent = memory.value.trim() ? t('saved_memory', 'Saved. Future-you is going to love this.') : t('blank_memory', 'A blank little page is saved too—write whenever it feels right.'); });
       let promptIndex = 0;
       document.getElementById('new-prompt').addEventListener('click', () => { const pool = prompts[activeLanguage]; promptIndex = (promptIndex + 1 + Math.floor(Math.random() * (pool.length - 1))) % pool.length; document.getElementById('love-prompt-text').textContent = pool[promptIndex]; });
+
+      const PHOTO_DB = 'salt-and-starlight-photos-v1';
+      const PHOTO_STORE = 'photos';
+      let photoDbPromise;
+      let photoObjectUrls = [];
+      function getPhotoDB() {
+        if (!photoDbPromise) {
+          photoDbPromise = new Promise((resolve, reject) => {
+            if (!window.indexedDB) { reject(new Error('IndexedDB is unavailable')); return; }
+            const request = window.indexedDB.open(PHOTO_DB, 1);
+            request.onupgradeneeded = () => { if (!request.result.objectStoreNames.contains(PHOTO_STORE)) request.result.createObjectStore(PHOTO_STORE, {keyPath: 'id'}); };
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error || new Error('Photo storage could not open'));
+          });
+        }
+        return photoDbPromise;
+      }
+      async function listPhotos() {
+        const db = await getPhotoDB();
+        return new Promise((resolve, reject) => {
+          const request = db.transaction(PHOTO_STORE, 'readonly').objectStore(PHOTO_STORE).getAll();
+          request.onsuccess = () => resolve(request.result || []);
+          request.onerror = () => reject(request.error || new Error('Photos could not load'));
+        });
+      }
+      async function savePhoto(photo) {
+        const db = await getPhotoDB();
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(PHOTO_STORE, 'readwrite');
+          transaction.objectStore(PHOTO_STORE).put(photo);
+          transaction.oncomplete = () => resolve();
+          transaction.onerror = () => reject(transaction.error || new Error('Photo could not save'));
+          transaction.onabort = () => reject(transaction.error || new Error('Photo could not save'));
+        });
+      }
+      async function removePhoto(id) {
+        const db = await getPhotoDB();
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(PHOTO_STORE, 'readwrite');
+          transaction.objectStore(PHOTO_STORE).delete(id);
+          transaction.oncomplete = () => resolve();
+          transaction.onerror = () => reject(transaction.error || new Error('Photo could not delete'));
+          transaction.onabort = () => reject(transaction.error || new Error('Photo could not delete'));
+        });
+      }
+      async function clearPhotos() {
+        try {
+          const db = await getPhotoDB();
+          await new Promise((resolve, reject) => {
+            const transaction = db.transaction(PHOTO_STORE, 'readwrite');
+            transaction.objectStore(PHOTO_STORE).clear();
+            transaction.oncomplete = () => resolve();
+            transaction.onerror = () => reject(transaction.error || new Error('Photos could not clear'));
+            transaction.onabort = () => reject(transaction.error || new Error('Photos could not clear'));
+          });
+        } catch (error) { /* no photo storage to clear */ }
+      }
+      function setPhotoStatus(message) { const status = document.getElementById('photo-status'); if (status) status.textContent = message; }
+      function photoCountMessage(count) { return activeLanguage === 'zh' ? format(t('photos_on_device'), {count}) : count + ' photo' + (count === 1 ? ' is' : 's are') + ' saved on this device.'; }
+      function clearPhotoUrls() { photoObjectUrls.forEach(url => URL.revokeObjectURL(url)); photoObjectUrls = []; }
+      async function renderPhotos() {
+        const grid = document.getElementById('photo-grid'); if (!grid) return;
+        clearPhotoUrls();
+        try {
+          const photos = (await listPhotos()).sort((a, b) => b.createdAt - a.createdAt);
+          if (!photos.length) {
+            grid.innerHTML = '<p class="photo-empty">' + safe(t('photo_empty', 'No photos yet — choose a few favourites to add.')) + '</p>';
+            setPhotoStatus('');
+            return;
+          }
+          grid.innerHTML = photos.map(photo => {
+            const url = URL.createObjectURL(photo.blob); photoObjectUrls.push(url);
+            const name = photo.name || (activeLanguage === 'zh' ? '公路旅行照片' : 'Road-trip photo');
+            const deleteLabel = activeLanguage === 'zh' ? t('delete_photo', '删除照片') + '：' + name : 'Delete photo: ' + name;
+            return '<figure class="photo-item"><img src="' + safe(url) + '" alt="' + safe(name) + '"><figcaption><span class="photo-name" title="' + safe(name) + '">' + safe(name) + '</span><button class="photo-delete" type="button" data-remove-photo="' + safe(photo.id) + '" aria-label="' + safe(deleteLabel) + '">×</button></figcaption></figure>';
+          }).join('');
+          grid.querySelectorAll('[data-remove-photo]').forEach(button => button.addEventListener('click', async () => {
+            try { await removePhoto(button.dataset.removePhoto); await renderPhotos(); }
+            catch (error) { setPhotoStatus(t('photo_error', 'Photos could not save. Please try again, or use fewer photos.')); }
+          }));
+          setPhotoStatus(photoCountMessage(photos.length));
+        } catch (error) {
+          grid.innerHTML = '<p class="photo-empty">' + safe(t('photo_error', 'Photos could not save. Please try again, or use fewer photos.')) + '</p>';
+          setPhotoStatus('');
+        }
+      }
+      const photoInput = document.getElementById('photo-input');
+      const photoUploadButton = document.getElementById('photo-upload-button');
+      photoInput.addEventListener('change', () => {
+        const count = Array.from(photoInput.files || []).filter(file => file.type.startsWith('image/')).length;
+        photoUploadButton.disabled = count === 0;
+        setPhotoStatus(count ? (activeLanguage === 'zh' ? format(t('photos_selected'), {count}) : count + ' photo' + (count === 1 ? ' is' : 's are') + ' ready to add.') : '');
+      });
+      photoUploadButton.addEventListener('click', async () => {
+        const files = Array.from(photoInput.files || []).filter(file => file.type.startsWith('image/'));
+        if (!files.length) return;
+        photoUploadButton.disabled = true;
+        setPhotoStatus(t('photos_uploading', 'Adding photos to your wall…'));
+        try {
+          for (const file of files) {
+            const id = window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : Date.now() + '-' + Math.random().toString(16).slice(2);
+            await savePhoto({id, name: file.name, blob: file, createdAt: Date.now()});
+          }
+          photoInput.value = '';
+          await renderPhotos();
+          setPhotoStatus(activeLanguage === 'zh' ? format(t('photos_saved'), {count: files.length}) : files.length + ' photo' + (files.length === 1 ? ' was' : 's were') + ' added to your wall.');
+        } catch (error) {
+          setPhotoStatus(t('photo_error', 'Photos could not save. Please try again, or use fewer photos.'));
+        }
+      });
       const shareLinkField = document.getElementById('share-link');
       const shareStatus = document.getElementById('share-status');
       const shareLinkWrap = document.getElementById('share-link-wrap');
@@ -1159,7 +1296,7 @@
       dayGuideDialog.addEventListener('click', event => { if (event.target === dayGuideDialog) dayGuideDialog.close(); });
       document.querySelectorAll('[data-language-choice]').forEach(button => button.addEventListener('click', () => { preferences.language = button.dataset.languageChoice; savePreferences(); applyLanguage(preferences.language); }));
       document.querySelectorAll('[data-theme-choice]').forEach(button => button.addEventListener('click', () => { preferences.theme = button.dataset.themeChoice; savePreferences(); applyTheme(preferences.theme); }));
-      document.getElementById('reset-site').addEventListener('click', () => { if (confirm(t('reset_confirm', 'Reset all saved names, checklists, budget and memories on this browser?'))) { localStorage.removeItem(STORE); location.reload(); } });
+      document.getElementById('reset-site').addEventListener('click', async () => { if (confirm(t('reset_confirm', 'Reset all saved names, checklists, budget, memories, and photos on this browser?'))) { localStorage.removeItem(STORE); await clearPhotos(); location.reload(); } });
       applyTheme(activeTheme);
       applyLanguage(activeLanguage);
     })();

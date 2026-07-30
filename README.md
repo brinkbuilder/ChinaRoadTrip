@@ -43,6 +43,10 @@ The link is a manual snapshot. It does not create live two-way syncing, so send 
 
 Every itinerary-day title opens an August-ready, timed day guide with pacing, practical checks, and a small couple prompt. Use the **EN / 中** controls in the top-right corner to switch the full planner and every daily guide between English and Simplified Chinese; use **☀ / ☾** for the light or dark theme. Every packing and checklist item has a small **×** button, including the original starter items, so you can tailor the lists freely.
 
+## Photo wall
+
+The photo wall accepts multiple image uploads and saves them in the browser's local IndexedDB storage. Photos stay on that particular device and are deliberately excluded from snapshot share links, because a static site has no private image-storage backend. Share the original photos separately if both people should keep a copy.
+
 ## Hosting
 
 This repository is configured for static hosting:
