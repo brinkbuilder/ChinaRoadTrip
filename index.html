@@ -192,6 +192,20 @@
     .love-prompt { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.18); }
     .love-prompt p { margin: 0; color: #fff9f4; font-family: Georgia, serif; font-size: 1.2rem; }
     .love-prompt button { flex: 0 0 auto; padding: 9px 12px; border: 1px solid rgba(255,255,255,.34); border-radius: 12px; color: #fffaf4; background: rgba(255,255,255,.09); font-weight: 850; }
+    .share-import { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 0 0 25px; padding: 17px 19px; border: 1px solid #b9dccc; border-radius: 18px; background: #eff9f2; box-shadow: 0 10px 25px rgba(61,49,91,.07); }
+    .share-import strong { display: block; margin-bottom: 3px; }
+    .share-import p { margin: 0; color: #5b7364; font-size: .86rem; }
+    .share-import-actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 8px; }
+    .share-card { padding: 27px; }
+    .share-card h3 { margin-bottom: 8px; font-family: Georgia, serif; font-size: 1.7rem; }
+    .share-card > p { max-width: 710px; color: var(--muted); }
+    .share-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .share-link-wrap { margin-top: 18px; padding: 16px; border-radius: 17px; background: #faf2eb; }
+    .share-link-wrap label { display: block; margin-bottom: 7px; color: #6b5e77; font-size: .78rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .share-link-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+    .share-link-row input { min-width: 0; padding: 10px 11px; border: 1px solid #ddcfc7; border-radius: 11px; color: var(--ink); background: #fffefa; }
+    .share-status { min-height: 1.25em; margin: 9px 0 0; color: #5b7865; font-size: .86rem; font-weight: 700; }
+    .share-note { margin-top: 16px !important; color: #8a6670 !important; font-size: .82rem; }
 
     .source-card { padding: 24px; }
     .source-card h3 { margin-bottom: 7px; font-family: Georgia, serif; font-size: 1.45rem; }
@@ -229,6 +243,8 @@
       .date-night form { grid-template-columns: 1fr; }
       .date-night button { justify-self: start; }
       .love-prompt { align-items: flex-start; flex-direction: column; }
+      .share-import { align-items: flex-start; flex-direction: column; }
+      .share-link-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -260,8 +276,13 @@
 
   <main class="shell">
     <nav class="jumpbar" aria-label="Quick links">
-      <a href="#itinerary">13-day plan</a><a href="#bookings">Book it</a><a href="#budget">Money tracker</a><a href="#intel">Research notes</a><a href="#packing">Pack cute + smart</a><a href="#memories">Tiny memories</a>
+      <a href="#itinerary">13-day plan</a><a href="#bookings">Book it</a><a href="#budget">Money tracker</a><a href="#intel">Research notes</a><a href="#packing">Pack cute + smart</a><a href="#share">Share it</a><a href="#memories">Tiny memories</a>
     </nav>
+
+    <aside id="share-import-banner" class="share-import" hidden aria-live="polite">
+      <div><strong>A shared trip plan is ready to unpack ✦</strong><p>Importing replaces the planner currently saved in this browser.</p></div>
+      <div class="share-import-actions"><button id="import-share" class="primary-button" type="button">Import shared plan</button><button id="dismiss-share" class="outline-button" type="button">Not now</button></div>
+    </aside>
 
     <section class="section" aria-labelledby="overview-title">
       <div class="section-head">
@@ -364,6 +385,10 @@
       <article class="card date-night"><p class="section-kicker" style="color:#ffd5ba">For the two of you</p><h3 id="memories-title">Leave a tiny breadcrumb for future-you.</h3><p>One sentence each night will make this trip feel even better when you read it back at home.</p><form id="memory-form"><label class="sr-only" for="memory">Today’s tiny memory</label><textarea id="memory" maxlength="480" placeholder="Today, I loved when you…"></textarea><button type="submit">Save our memory ♥</button></form><p id="memory-saved" class="memory-saved" aria-live="polite"></p><div class="love-prompt"><p id="love-prompt-text">Tonight’s question: What was your favourite tiny moment today?</p><button id="new-prompt" type="button">Give us another ✦</button></div></article>
     </section>
 
+    <section class="section" id="share" aria-labelledby="share-title">
+      <article class="card share-card"><p class="section-kicker">For your co-pilot</p><h3 id="share-title">Send the plan you have actually filled in.</h3><p>Create a private snapshot link after you add your names, checklist ticks, budget, custom items, and little memories. Your partner opens the link and taps <em>Import shared plan</em>.</p><div class="share-actions"><button id="make-share-link" class="primary-button" type="button">Create share link ♥</button></div><div id="share-link-wrap" class="share-link-wrap" hidden><label for="share-link">Your shareable trip link</label><div class="share-link-row"><input id="share-link" type="text" readonly aria-describedby="share-status"><button id="copy-share-link" class="soft-button" type="button">Copy link</button></div><p id="share-status" class="share-status" aria-live="polite"></p></div><p class="share-note">This is a snapshot, not live sync: send a new link after making new changes. Anyone with the link can read the shared plan, so send it only to your partner.</p></article>
+    </section>
+
     <section class="section" aria-labelledby="sources-title">
       <article class="card source-card"><h3 id="sources-title">Official links to check right before you go</h3><p>Research checked on 30 July 2026. Prices, seasons, bookings, access rules and road conditions can change—please open these official sources when you make the actual reservation.</p><div class="sources">
         <a class="source-link" href="https://www.mgk.org.cn/" target="_blank" rel="noopener"><span>↗</span>Mogao Caves official booking</a>
@@ -389,6 +414,44 @@
       const state = JSON.parse(localStorage.getItem(STORE) || '{}');
       const save = () => localStorage.setItem(STORE, JSON.stringify(state));
       const safe = (value) => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+      const SHARE_PARAM = 'plan';
+      const PUBLIC_SITE_URL = 'https://brinkbuilder.github.io/ChinaRoadTrip/';
+      let pendingSharedPlan = null;
+
+      function encodeSharedPlan(payload) {
+        const bytes = new TextEncoder().encode(JSON.stringify(payload));
+        let binary = '';
+        bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+        return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+      }
+      function decodeSharedPlan(encoded) {
+        const standard = encoded.replace(/-/g, '+').replace(/_/g, '/');
+        const padded = standard + '='.repeat((4 - (standard.length % 4)) % 4);
+        const binary = atob(padded);
+        const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+        return JSON.parse(new TextDecoder().decode(bytes));
+      }
+      function shareBaseUrl() {
+        return location.protocol === 'file:' ? PUBLIC_SITE_URL : location.origin + location.pathname;
+      }
+      function clearShareQuery() {
+        history.replaceState({}, '', location.pathname + location.hash);
+      }
+      function inspectSharedPlan() {
+        const encoded = new URLSearchParams(location.search).get(SHARE_PARAM);
+        if (!encoded) return;
+        try {
+          const payload = decodeSharedPlan(encoded);
+          if (payload && payload.app === 'salt-and-starlight' && payload.version === 1 && payload.data && typeof payload.data === 'object' && !Array.isArray(payload.data)) {
+            pendingSharedPlan = payload.data;
+            document.getElementById('share-import-banner').hidden = false;
+          } else {
+            clearShareQuery();
+          }
+        } catch (error) {
+          clearShareQuery();
+        }
+      }
 
       document.querySelectorAll('.save-field').forEach(field => {
         field.value = state[field.id] || '';
@@ -478,6 +541,55 @@
       ];
       let promptIndex = 0;
       document.getElementById('new-prompt').addEventListener('click', () => { promptIndex = (promptIndex + 1 + Math.floor(Math.random() * (prompts.length - 1))) % prompts.length; document.getElementById('love-prompt-text').textContent = prompts[promptIndex]; });
+      const shareLinkField = document.getElementById('share-link');
+      const shareStatus = document.getElementById('share-status');
+      const shareLinkWrap = document.getElementById('share-link-wrap');
+      async function copyShareLink() {
+        if (!shareLinkField.value) return;
+        shareLinkField.focus();
+        shareLinkField.select();
+        shareLinkField.setSelectionRange(0, shareLinkField.value.length);
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(shareLinkField.value);
+          } else {
+            document.execCommand('copy');
+          }
+          shareStatus.textContent = 'Copied! Send that link to your co-pilot ♥';
+        } catch (error) {
+          shareStatus.textContent = 'The link is selected—copy it manually, then send it to your co-pilot.';
+        }
+      }
+      document.getElementById('make-share-link').addEventListener('click', () => {
+        const payload = { app: 'salt-and-starlight', version: 1, savedAt: new Date().toISOString(), data: state };
+        const link = shareBaseUrl() + '?' + SHARE_PARAM + '=' + encodeSharedPlan(payload);
+        if (link.length > 7000) {
+          shareLinkWrap.hidden = false;
+          shareLinkField.value = '';
+          shareStatus.textContent = 'This snapshot is too large for a reliable link. Remove a few long custom notes, then try again.';
+          return;
+        }
+        shareLinkField.value = link;
+        shareLinkWrap.hidden = false;
+        shareStatus.textContent = 'Your snapshot is ready. Copy it, then send it to your co-pilot.';
+        copyShareLink();
+      });
+      document.getElementById('copy-share-link').addEventListener('click', copyShareLink);
+      document.getElementById('import-share').addEventListener('click', () => {
+        if (!pendingSharedPlan) return;
+        if (!confirm('Import this shared plan and replace the planner currently saved in this browser?')) return;
+        Object.keys(state).forEach(key => delete state[key]);
+        Object.assign(state, pendingSharedPlan);
+        save();
+        clearShareQuery();
+        location.reload();
+      });
+      document.getElementById('dismiss-share').addEventListener('click', () => {
+        pendingSharedPlan = null;
+        document.getElementById('share-import-banner').hidden = true;
+        clearShareQuery();
+      });
+      inspectSharedPlan();
       document.getElementById('reset-site').addEventListener('click', () => { if (confirm('Reset all saved names, checklists, budget and memories on this browser?')) { localStorage.removeItem(STORE); location.reload(); } });
     })();
   </script>

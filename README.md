@@ -29,6 +29,16 @@ git push
 
 The checklists, budget, names, countdown date, and memories are stored only in each visitor's browser using local storage. They are not saved to GitHub or the hosting provider.
 
+## Share a filled-in plan
+
+Use the **Share it** section in the site:
+
+1. Fill in the names, checklists, budget, custom items, and memories.
+2. Select **Create share link** and send the copied link to your partner.
+3. They open it and select **Import shared plan**.
+
+The link is a manual snapshot. It does not create live two-way syncing, so send a fresh link after new changes. Anyone who receives the link can read the included trip details.
+
 ## Hosting
 
 This repository is configured for static hosting:
