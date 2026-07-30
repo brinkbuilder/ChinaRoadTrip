@@ -39,6 +39,10 @@ Use the **Share it** section in the site:
 
 The link is a manual snapshot. It does not create live two-way syncing, so send a fresh link after new changes. Anyone who receives the link can read the included trip details.
 
+## Daily guides and custom lists
+
+Every itinerary-day title opens an August-ready, timed day guide with pacing, practical checks, and a small couple prompt. Custom items added to a packing or checklist section show a small **×** button so they can be removed later. The original starter items remain in place.
+
 ## Hosting
 
 This repository is configured for static hosting:
