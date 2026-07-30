@@ -41,7 +41,7 @@ The link is a manual snapshot. It does not create live two-way syncing, so send 
 
 ## Daily guides, languages, and custom lists
 
-Every itinerary-day title opens an August-ready, timed day guide with pacing, practical checks, and a small couple prompt. Use the **EN / 中** controls in the top-right corner to switch the full planner and every daily guide between English and Simplified Chinese; use **☀ / ☾** for the light or dark theme. Custom items added to a packing or checklist section show a small **×** button so they can be removed later. The original starter items remain in place.
+Every itinerary-day title opens an August-ready, timed day guide with pacing, practical checks, and a small couple prompt. Use the **EN / 中** controls in the top-right corner to switch the full planner and every daily guide between English and Simplified Chinese; use **☀ / ☾** for the light or dark theme. Every packing and checklist item has a small **×** button, including the original starter items, so you can tailor the lists freely.
 
 ## Hosting
 

@@ -169,6 +169,7 @@
     .list-card > p { color: var(--muted); font-size: .9rem; }
     .checklist { display: grid; gap: 7px; margin-top: 18px; }
     .check-item { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px dashed #e8dfd8; }
+    .check-item.has-priority { grid-template-columns: auto 1fr auto auto; }
     .check-item:last-child { border-bottom: 0; }
     .check-item input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--coral); }
     .check-item label { cursor: pointer; font-size: .92rem; }
@@ -212,7 +213,7 @@
     .pack-card h3 { margin-bottom: 10px; font-family: Georgia, serif; font-size: 1.32rem; }
     .pack-card .checklist { margin-top: 0; }
     .pack-card .check-item { grid-template-columns: auto 1fr; padding: 7px 0; }
-    .pack-card .check-item.is-custom { grid-template-columns: auto 1fr auto; }
+    .pack-card .check-item.has-delete { grid-template-columns: auto 1fr auto; }
 
     .date-night { padding: 32px; color: #fff9f4; background: linear-gradient(135deg, #4a385f, #704963); overflow: hidden; }
     .date-night h3 { margin-bottom: 8px; font-family: Georgia, serif; font-size: 1.72rem; }
@@ -1003,15 +1004,23 @@
         'love-pack': [['Camera / disposable camera', ''], ['A tiny surprise for each other', ''], ['One nice dinner outfit', ''], ['Playlist downloaded offline', ''], ['Journal or this page on your phone', ''], ['Room for a silly souvenir', '']]
       };
 
-      function getList(id) { return Array.isArray(state[id]) ? state[id] : defaults[id].map(([text, tag]) => ({text, tag, done: false})); }
+      function getList(id) {
+        const stored = Array.isArray(state[id]) ? state[id] : defaults[id].map(([text, tag], defaultIndex) => ({text, tag, done: false, defaultIndex}));
+        return stored.map(item => {
+          if (item.custom || Number.isInteger(item.defaultIndex)) return item;
+          const defaultIndex = defaults[id].findIndex(([text]) => text === item.text || (id === 'booking-list' && text === 'Book all 12 hotel nights with free cancellation where possible' && item.text === 'Book all 11 hotel nights with free cancellation where possible'));
+          return defaultIndex >= 0 ? {...item, defaultIndex} : item;
+        });
+      }
       function renderList(id) {
         const container = document.getElementById(id); if (!container) return;
         const list = getList(id); state[id] = list;
         container.innerHTML = list.map((item, index) => {
-          const label = !item.custom && activeLanguage === 'zh' && defaultCopyZh[id] && defaultCopyZh[id][index] ? defaultCopyZh[id][index] : (!item.custom && defaults[id] && defaults[id][index] ? defaults[id][index][0] : item.text);
+          const starter = Number.isInteger(item.defaultIndex) ? defaults[id][item.defaultIndex] : null;
+          const label = starter ? (activeLanguage === 'zh' && defaultCopyZh[id] && defaultCopyZh[id][item.defaultIndex] ? defaultCopyZh[id][item.defaultIndex] : starter[0]) : item.text;
           const priority = item.tag ? (activeLanguage === 'zh' ? t('priority', '重要') : item.tag) : '';
           const removeLabel = activeLanguage === 'zh' ? '删除 ' + label : 'Delete ' + label;
-          return '<div class="check-item ' + (item.done ? 'done ' : '') + (item.custom ? 'is-custom' : '') + '"><input type="checkbox" id="' + id + '-' + index + '" data-list="' + id + '" data-index="' + index + '" ' + (item.done ? 'checked' : '') + '><label for="' + id + '-' + index + '">' + safe(label) + '</label>' + (priority ? '<span class="priority">' + safe(priority) + '</span>' : '') + (item.custom ? '<button class="delete-item" type="button" data-remove-list="' + id + '" data-remove-index="' + index + '" aria-label="' + safe(removeLabel) + '">×</button>' : '') + '</div>';
+          return '<div class="check-item has-delete ' + (priority ? 'has-priority ' : '') + (item.done ? 'done ' : '') + (item.custom ? 'is-custom' : '') + '"><input type="checkbox" id="' + id + '-' + index + '" data-list="' + id + '" data-index="' + index + '" ' + (item.done ? 'checked' : '') + '><label for="' + id + '-' + index + '">' + safe(label) + '</label>' + (priority ? '<span class="priority">' + safe(priority) + '</span>' : '') + '<button class="delete-item" type="button" data-remove-list="' + id + '" data-remove-index="' + index + '" aria-label="' + safe(removeLabel) + '">×</button></div>';
         }).join('');
         container.querySelectorAll('input').forEach(box => box.addEventListener('change', () => { const list = getList(box.dataset.list); list[Number(box.dataset.index)].done = box.checked; state[box.dataset.list] = list; save(); renderList(box.dataset.list); }));
         container.querySelectorAll('[data-remove-list]').forEach(button => button.addEventListener('click', () => { const list = getList(button.dataset.removeList); list.splice(Number(button.dataset.removeIndex), 1); state[button.dataset.removeList] = list; save(); renderList(button.dataset.removeList); }));
